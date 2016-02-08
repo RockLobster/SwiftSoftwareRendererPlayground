@@ -57,3 +57,12 @@ extension AttributedVector : LinearInterpolatable {
         )
     }
 }
+
+func alphaForValueInRange(value: FloatType, range: BoundingBoxRange) -> FloatType {
+    let rangeWidth = range.max - range.min
+    let relativeValue = value - range.min
+    let alpha = relativeValue / rangeWidth
+    
+    assert(alpha >= 0 && alpha <= 1)
+    return alpha
+}

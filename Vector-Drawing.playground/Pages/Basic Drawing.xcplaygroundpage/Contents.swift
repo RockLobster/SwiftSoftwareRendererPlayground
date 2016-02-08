@@ -40,25 +40,35 @@ let triangle3 = [
     AttributedVector(Vector3D(-39, 30), Color.Blue(), nil)
 ]
 
+//Triangle 4
+let triangle4 = [
+    AttributedVector(Vector3D(-2.6071, 131.224, -10.3267), Color.Red(), nil),
+    AttributedVector(Vector3D(-1.3369, 129.913, -12.1076), Color.Green(), nil),
+    AttributedVector(Vector3D(-2.5856, 129.913, -12.9089), Color.Blue(), nil)
+]
+
+func render(triangle: [AttributedVector], rasterer: TriangleRasterer) {
+    triangleRasterer.rasterTriangle(triangle[0], vertice2: triangle[1], vertice3: triangle[2])
+}
+
 var triangleRasterer: TriangleRasterer
-triangleRasterer = WireframeRasterer(target: bitmap)
+triangleRasterer = WireframeRasterer(target: bitmap, lineColor: Color.Green())
 
 bitmap.clearWithBlack()
-triangleRasterer.rasterTriangle(triangle1[0], vertice2: triangle1[1], vertice3: triangle1[2], shader: {$0.color})
-triangleRasterer.rasterTriangle(triangle2[0], vertice2: triangle2[1], vertice3: triangle2[2], shader: {$0.color})
-triangleRasterer.rasterTriangle(triangle3[0], vertice2: triangle3[1], vertice3: triangle3[2], shader: {$0.color})
+render(triangle1, rasterer: triangleRasterer)
+render(triangle2, rasterer: triangleRasterer)
+render(triangle3, rasterer: triangleRasterer)
+render(triangle4, rasterer: triangleRasterer)
 imageView.image = bitmap.createUIImage()
 
 
-triangleRasterer = FillingRasterer(target: bitmap)
+let defaultShader: FragmentShader = {$0.color}
+triangleRasterer = FillingRasterer(target: bitmap, fragmentShader: defaultShader)
 
 bitmap.clearWithBlack()
-triangleRasterer.rasterTriangle(triangle1[0], vertice2: triangle1[1], vertice3: triangle1[2], shader: {$0.color})
-triangleRasterer.rasterTriangle(triangle2[0], vertice2: triangle2[1], vertice3: triangle2[2], shader: {$0.color})
-triangleRasterer.rasterTriangle(triangle3[0], vertice2: triangle3[1], vertice3: triangle3[2], shader: {$0.color})
+render(triangle1, rasterer: triangleRasterer)
+render(triangle2, rasterer: triangleRasterer)
+render(triangle3, rasterer: triangleRasterer)
+render(triangle4, rasterer: triangleRasterer)
 imageView.image = bitmap.createUIImage()
-
-
-
-
 

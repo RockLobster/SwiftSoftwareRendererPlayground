@@ -4,10 +4,12 @@ public class FillingRasterer : TriangleRasterer {
     
     let target: Bitmap
     let lineDrawer: LineDrawer
+    let fragmentShader: FragmentShader
     
-    public required init(target: Bitmap) {
+    public required init(target: Bitmap, fragmentShader: FragmentShader) {
         self.target = target
         self.lineDrawer = BresenhamLineDrawer(target: target)
+        self.fragmentShader = fragmentShader
     }
     
     func drawToPixel(x: Int, y:Int, drawColor: Color) {
@@ -28,25 +30,25 @@ public class FillingRasterer : TriangleRasterer {
         }
     }
     
-    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, shader: FragmentShader) {
+    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector) {
         var verticeSet = [vertice1, vertice2, vertice3]
         
         verticeSet.sortInPlace { return $0.location.y < $1.location.y }
         let firstRange  = verticeSet[1].location.y - verticeSet[0].location.y;
         let secondRange = verticeSet[2].location.y - verticeSet[1].location.y;
         
-        drawVec(verticeSet[0], shader: shader)
-        drawVec(verticeSet[1], shader: shader)
-        drawVec(verticeSet[2], shader: shader)
+        drawVec(verticeSet[0], shader: self.fragmentShader)
+        drawVec(verticeSet[1], shader: self.fragmentShader)
+        drawVec(verticeSet[2], shader: self.fragmentShader)
         
-        for offset in 1..<Int(ceil(firstRange)) {
+        for offset in 0..<Int(ceil(firstRange)) {
             let alpha1 = Float(offset)/firstRange;
             let alpha2 = Float(offset)/(firstRange+secondRange);
             
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[1], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
             
-            rasterHorizontalLine(interpolatedVector1, interpolatedVector2, shader: shader)
+            rasterHorizontalLine(interpolatedVector1, interpolatedVector2)
         }
         for offset in 0..<Int(ceil(secondRange)) {
             let alpha1 = Float(offset)/secondRange;
@@ -55,7 +57,7 @@ public class FillingRasterer : TriangleRasterer {
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[1], second: verticeSet[2], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
             
-            rasterHorizontalLine(interpolatedVector1, interpolatedVector2, shader: shader)
+            rasterHorizontalLine(interpolatedVector1, interpolatedVector2)
         }
     }
     
@@ -63,10 +65,10 @@ public class FillingRasterer : TriangleRasterer {
         return (location - rangeBegin) / (rangeEnd - rangeBegin)
     }
     
-    func rasterHorizontalLine(start: AttributedVector, _ end: AttributedVector, shader: FragmentShader) {
+    func rasterHorizontalLine(start: AttributedVector, _ end: AttributedVector) {
         
         if (end.location.x < start.location.x) {
-            return rasterHorizontalLine(end, start, shader: shader)
+            return rasterHorizontalLine(end, start)
         }
         
         let startX = Int(round(start.location.x))
@@ -83,7 +85,7 @@ public class FillingRasterer : TriangleRasterer {
             let alphaToUse = min(1.0, max(0.0, currentAlpha))
             let vectorAtX = AttributedVector.linearInterpolate(start, second: end, alpha: alphaToUse)
             
-            drawVec(vectorAtX, shader: shader)
+            drawVec(vectorAtX, shader: self.fragmentShader)
             
             currentAlpha += alphaIncrement
         }

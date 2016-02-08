@@ -1,10 +1,14 @@
 import Foundation
 
-public struct Vector3D {
+public struct Vector3D : CustomDebugStringConvertible {
     
     public var x : FloatType
     public var y : FloatType
     public var z : FloatType
+
+    public var debugDescription: String {
+        return "Vector x: [\(x)] y: [\(y)] z: [\(z)]"
+    }
     
     public init(_ x: FloatType, _ y: FloatType) {
         self.x = x
