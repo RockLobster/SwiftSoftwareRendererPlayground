@@ -76,12 +76,11 @@ extension Color : LinearInterpolatable {
 
 extension AttributedVector : LinearInterpolatable {
     public static func linearInterpolate(first: AttributedVector, second: AttributedVector, alpha: FloatType) -> AttributedVector {
-        var result = AttributedVector(
+        return AttributedVector(
             Vector3D.linearInterpolate(first.location, second: second.location, alpha: alpha),
             Color.linearInterpolate(first.color, second: second.color, alpha: alpha),
-            Vector3D.linearInterpolate(first.normal, second: second.normal, alpha: alpha)
+            Vector3D.linearInterpolate(first.normal, second: second.normal, alpha: alpha),
+            Point.linearInterpolate(first.windowCoordinate, second: second.windowCoordinate, alpha: alpha)
         )
-        result.windowCoordinate = Point.linearInterpolate(first.windowCoordinate, second: second.windowCoordinate, alpha: alpha)
-        return result
     }
 }

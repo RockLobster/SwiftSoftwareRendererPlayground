@@ -7,7 +7,8 @@ public func SimpleProjectionShader(projectionMatrix: Matrix4x4) -> VertexShader 
         return AttributedVector(
             projectionMatrix * vertex.location,
             vertex.color,
-            vertex.normal
+            vertex.normal,
+            vertex.windowCoordinate
         )
     }
 }
