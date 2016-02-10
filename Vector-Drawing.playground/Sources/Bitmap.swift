@@ -88,3 +88,17 @@ public class Bitmap {
         }
     }
 }
+
+extension Bitmap {
+    public func pixelCoordinatesForEyeSpaceVector(vector: Vector3D) -> Point {
+        let x = round((vector.x + 1.0) / 2 * FloatType(width))
+        let y = round((vector.y + 1.0) / 2 * FloatType(height))
+        return (x, y)
+    }
+}
+
+extension Bitmap {
+    public var aspectRatio: FloatType {
+        return FloatType(width)/FloatType(height)
+    }
+}

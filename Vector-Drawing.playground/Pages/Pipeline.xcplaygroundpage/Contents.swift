@@ -27,19 +27,22 @@ if let model = model {
     imageView.layer.magnificationFilter = kCAFilterNearest
     imageView.layer.minificationFilter  = kCAFilterNearest
     
-    let bitmap = Bitmap(width: 100, height: 100)
+    let bitmap = Bitmap(width: 200, height: 200)
+    let boundingBox = model.boundingBox!
+    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio)
+    let vertexShader = SimpleProjectionShader(projectionMatrix)
     
-    var rasterer: TriangleRasterer = WireframeRasterer(target: bitmap, lineColor: Color.Green())
+    func renderUsingRasterer(rasterer: TriangleRasterer) -> UIImage? {
+        bitmap.clearWithBlack()
+        model.renderUsing(vertexShader, rasterer: rasterer)
+        return bitmap.createUIImage()
+    }
     
-    bitmap.clearWithBlack()
-    model.renderUsing(rasterer)
-    imageView.image = bitmap.createUIImage()
+    imageView.image = renderUsingRasterer( PointCloudRasterer(target: bitmap, pointColor: Color.White()) )
     
-    rasterer = FillingRasterer(target: bitmap, fragmentShader: model.boundingBoxLocationFragmentShader())
-
-    bitmap.clearWithBlack()
-    model.renderUsing(rasterer)
-    imageView.image = bitmap.createUIImage()
+    imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()) )
+    
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)) )
 }
 
 //: [Next](@next)

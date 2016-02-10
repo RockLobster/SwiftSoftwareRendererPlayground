@@ -33,8 +33,11 @@ public class TriangleModel {
             zRange: BoundingBoxRange(min: minZ, max: maxZ)
         )
     }
+}
+
+extension TriangleModel {
     
-    func attributedVectorFor(indices: FaceVertexIndices) -> AttributedVector {
+    private func attributedVectorFor(indices: FaceVertexIndices) -> AttributedVector {
         let location = geometricVertices[indices.vertexIndex]
         var normal: Vector3D? = nil
         if let normalIndex = indices.normalIndex {
@@ -43,29 +46,14 @@ public class TriangleModel {
         
         return AttributedVector(location, nil, normal)
     }
-}
-
-extension TriangleModel {
     
-    public func boundingBoxLocationFragmentShader() -> FragmentShader {
+    public func renderUsing(vertexShader :VertexShader, rasterer: TriangleRasterer) {
         
-        let boundingBox = self.boundingBox
-        
-        return {
-            return Color(
-                red: UInt8(alphaForValueInRange($0.location.x, range: boundingBox!.xRange) * 255),
-                green: UInt8(alphaForValueInRange($0.location.y, range: boundingBox!.yRange) * 255),
-                blue: UInt8(alphaForValueInRange($0.location.z, range: boundingBox!.zRange) * 255)
-            )
-        }
-    }
-    
-    public func renderUsing(rasterer: TriangleRasterer) {
         for i in 0..<self.faceIndices.count/3 {
             
-            let vertex1 = self.attributedVectorFor(self.faceIndices[i * 3 + 0])
-            let vertex2 = self.attributedVectorFor(self.faceIndices[i * 3 + 1])
-            let vertex3 = self.attributedVectorFor(self.faceIndices[i * 3 + 2])
+            let vertex1 = vertexShader(self.attributedVectorFor(self.faceIndices[i * 3 + 0]))
+            let vertex2 = vertexShader(self.attributedVectorFor(self.faceIndices[i * 3 + 1]))
+            let vertex3 = vertexShader(self.attributedVectorFor(self.faceIndices[i * 3 + 2]))
             
 //            print("Triangle \(i)")
 //            print(vertex1)
@@ -74,7 +62,8 @@ extension TriangleModel {
             
             rasterer.rasterTriangle(vertex1,
                 vertice2: vertex2,
-                vertice3: vertex3)
+                vertice3: vertex3,
+                locationsAreInScreenSpace: true)
         }
     }
 }

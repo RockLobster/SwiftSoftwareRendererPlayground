@@ -14,7 +14,7 @@ public class BresenhamLineDrawer: LineDrawer {
         target[x, y, 2] = drawColor.blue
     }
     
-    private func safeBresenham(start: Vector3D, end: Vector3D, xAndYSwizzled: Bool, color: Color) {
+    private func safeBresenham(start: Point, end: Point, xAndYSwizzled: Bool, color: Color) {
         
         let xDistance = (end.x-start.x)
         if(xDistance == 0) {
@@ -43,12 +43,12 @@ public class BresenhamLineDrawer: LineDrawer {
         }
     }
     
-    public func drawLine(var start: Vector3D, var end: Vector3D, color: Color) {
+    public func drawLine(var start: Point, var end: Point, color: Color) {
         
         let isSteep = abs(end.y-start.y) > abs(end.x-start.x)
         if (isSteep) {
-            start = Vector3D(start.y, start.x, 0)
-            end   = Vector3D(end.y,   end.x,   0)
+            start = (start.y, start.x)
+            end   = (end.y,   end.x)
         }
         
         if (end.x < start.x) {

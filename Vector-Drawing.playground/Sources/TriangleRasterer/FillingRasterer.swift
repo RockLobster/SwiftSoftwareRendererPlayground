@@ -18,28 +18,29 @@ public class FillingRasterer : TriangleRasterer {
         target[x, y, 2] = drawColor.blue
     }
     
-    func drawToPixel(x: Float, y: Float, drawColor: Color) {
+    private func drawToPixel(x: Float, y: Float, drawColor: Color) {
         self.drawToPixel(Int(round(x)), y: Int(round(y)), drawColor: drawColor);
     }
     
-    func drawVec(vector: AttributedVector, shader: FragmentShader) {
+    func drawVec(vector: AttributedVector, shader: FragmentShader, locationsAreInScreenSpace: Bool) {
         let optionalFragmentColor = shader(vector)
         
         if let fragmentColor = optionalFragmentColor {
-            drawToPixel(vector.location.x, y: vector.location.y, drawColor: fragmentColor)
+            let location = locationsAreInScreenSpace ? target.pixelCoordinatesForEyeSpaceVector(vector.location) : (x: vector.location.x, y: vector.location.y)
+            drawToPixel(location.x, y: location.y, drawColor: fragmentColor)
         }
     }
     
-    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector) {
+    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInScreenSpace: Bool) {
         var verticeSet = [vertice1, vertice2, vertice3]
         
         verticeSet.sortInPlace { return $0.location.y < $1.location.y }
         let firstRange  = verticeSet[1].location.y - verticeSet[0].location.y;
         let secondRange = verticeSet[2].location.y - verticeSet[1].location.y;
         
-        drawVec(verticeSet[0], shader: self.fragmentShader)
-        drawVec(verticeSet[1], shader: self.fragmentShader)
-        drawVec(verticeSet[2], shader: self.fragmentShader)
+        //drawVec(verticeSet[0], shader: self.fragmentShader, locationsAreInScreenSpace: locationsAreInScreenSpace)
+        //drawVec(verticeSet[1], shader: self.fragmentShader, locationsAreInScreenSpace: locationsAreInScreenSpace)
+        //drawVec(verticeSet[2], shader: self.fragmentShader, locationsAreInScreenSpace: locationsAreInScreenSpace)
         
         for offset in 0..<Int(ceil(firstRange)) {
             let alpha1 = Float(offset)/firstRange;
@@ -48,7 +49,7 @@ public class FillingRasterer : TriangleRasterer {
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[1], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
             
-            rasterHorizontalLine(interpolatedVector1, interpolatedVector2)
+            rasterHorizontalLine(interpolatedVector1, interpolatedVector2, locationsAreInScreenSpace: locationsAreInScreenSpace)
         }
         for offset in 0..<Int(ceil(secondRange)) {
             let alpha1 = Float(offset)/secondRange;
@@ -57,7 +58,7 @@ public class FillingRasterer : TriangleRasterer {
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[1], second: verticeSet[2], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
             
-            rasterHorizontalLine(interpolatedVector1, interpolatedVector2)
+            rasterHorizontalLine(interpolatedVector1, interpolatedVector2, locationsAreInScreenSpace: locationsAreInScreenSpace)
         }
     }
     
@@ -65,10 +66,10 @@ public class FillingRasterer : TriangleRasterer {
         return (location - rangeBegin) / (rangeEnd - rangeBegin)
     }
     
-    func rasterHorizontalLine(start: AttributedVector, _ end: AttributedVector) {
+    func rasterHorizontalLine(start: AttributedVector, _ end: AttributedVector, locationsAreInScreenSpace: Bool) {
         
         if (end.location.x < start.location.x) {
-            return rasterHorizontalLine(end, start)
+            return rasterHorizontalLine(end, start, locationsAreInScreenSpace: locationsAreInScreenSpace)
         }
         
         let startX = Int(round(start.location.x))
@@ -85,7 +86,7 @@ public class FillingRasterer : TriangleRasterer {
             let alphaToUse = min(1.0, max(0.0, currentAlpha))
             let vectorAtX = AttributedVector.linearInterpolate(start, second: end, alpha: alphaToUse)
             
-            drawVec(vectorAtX, shader: self.fragmentShader)
+            drawVec(vectorAtX, shader: self.fragmentShader, locationsAreInScreenSpace: locationsAreInScreenSpace)
             
             currentAlpha += alphaIncrement
         }

@@ -11,12 +11,12 @@ let bitmap = Bitmap(width: 100, height: 100)
 
 bitmap.clearWithBlack()
 let lineDrawer = BresenhamLineDrawer(target: bitmap)
-lineDrawer.drawLine(Vector3D(0, 20), end: Vector3D(Float(bitmap.width-1), Float(20)), color: Color.Green())
-lineDrawer.drawLine(Vector3D(20, 0), end: Vector3D(Float(20), Float(bitmap.height-1)), color: Color.Green())
-lineDrawer.drawLine(Vector3D(0, 0),  end: Vector3D(Float(bitmap.width-1), Float(bitmap.height/2-1)), color: Color.White())
-lineDrawer.drawLine(Vector3D(50,60), end: Vector3D(50,60), color: Color.Green())
-lineDrawer.drawLine(Vector3D(0, 0),  end: Vector3D(99, 99), color: Color.Blue())
-lineDrawer.drawLine(Vector3D(0, 99), end: Vector3D(99, 70), color: Color.Red())
+lineDrawer.drawLine((0, 20), end: (Float(bitmap.width-1), Float(20)), color: Color.Green())
+lineDrawer.drawLine((20, 0), end: (Float(20), Float(bitmap.height-1)), color: Color.Green())
+lineDrawer.drawLine((0, 0),  end: (Float(bitmap.width-1), Float(bitmap.height/2-1)), color: Color.White())
+lineDrawer.drawLine((50,60), end: (50,60), color: Color.Green())
+lineDrawer.drawLine((0, 0),  end: (99, 99), color: Color.Blue())
+lineDrawer.drawLine((0, 99), end: (99, 70), color: Color.Red())
 imageView.image = bitmap.createUIImage()
 
 //Triangle 1
@@ -48,7 +48,7 @@ let triangle4 = [
 ]
 
 func render(triangle: [AttributedVector], rasterer: TriangleRasterer) {
-    triangleRasterer.rasterTriangle(triangle[0], vertice2: triangle[1], vertice3: triangle[2])
+    triangleRasterer.rasterTriangle(triangle[0], vertice2: triangle[1], vertice3: triangle[2], locationsAreInScreenSpace: false)
 }
 
 var triangleRasterer: TriangleRasterer
@@ -61,9 +61,7 @@ render(triangle3, rasterer: triangleRasterer)
 render(triangle4, rasterer: triangleRasterer)
 imageView.image = bitmap.createUIImage()
 
-
-let defaultShader: FragmentShader = {$0.color}
-triangleRasterer = FillingRasterer(target: bitmap, fragmentShader: defaultShader)
+triangleRasterer = FillingRasterer(target: bitmap, fragmentShader: DefaultColorShader)
 
 bitmap.clearWithBlack()
 render(triangle1, rasterer: triangleRasterer)
