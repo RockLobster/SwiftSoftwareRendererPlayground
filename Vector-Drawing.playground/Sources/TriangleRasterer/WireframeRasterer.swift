@@ -12,14 +12,14 @@ public class WireframeRasterer : TriangleRasterer {
         self.lineColor = lineColor
     }
     
-    private func pixelPointForLocation(location: Vector3D, locationsAreInScreenSpace: Bool) -> Point {
-        return locationsAreInScreenSpace ? target.pixelCoordinatesForEyeSpaceVector(location) : (location.x, location.y)
+    private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
+        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForEyeSpaceVector(location) : Point(location.x, location.y)
     }
     
-    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInScreenSpace: Bool) {
-        let v1 = pixelPointForLocation(vertice1.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
-        let v2 = pixelPointForLocation(vertice2.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
-        let v3 = pixelPointForLocation(vertice3.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
+    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {
+        let v1 = pixelPointForLocation(vertice1.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        let v2 = pixelPointForLocation(vertice2.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        let v3 = pixelPointForLocation(vertice3.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         
         lineDrawer.drawLine(v1, end: v2, color: self.lineColor)
         lineDrawer.drawLine(v2, end: v3, color: self.lineColor)

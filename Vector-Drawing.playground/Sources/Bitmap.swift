@@ -93,7 +93,7 @@ extension Bitmap {
     public func pixelCoordinatesForEyeSpaceVector(vector: Vector3D) -> Point {
         let x = round((vector.x + 1.0) / 2 * FloatType(width))
         let y = round((vector.y + 1.0) / 2 * FloatType(height))
-        return (x, y)
+        return Point(x, y)
     }
 }
 

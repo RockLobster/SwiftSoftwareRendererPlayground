@@ -16,19 +16,19 @@ public class PointCloudRasterer : TriangleRasterer {
         target[x, y, 2] = self.pointColor.blue
     }
     
-    private func pixelPointForLocation(location: Vector3D, locationsAreInScreenSpace: Bool) -> Point {
-        return locationsAreInScreenSpace ? target.pixelCoordinatesForEyeSpaceVector(location) : (location.x, location.y)
+    private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
+        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForEyeSpaceVector(location) : Point(location.x, location.y)
     }
     
     private func drawPoint(point: Point) {
         drawToPixel(Int(round(point.x)), y: Int(round(point.y)))
     }
     
-    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInScreenSpace: Bool) {
+    public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {
         
-        let v1 = pixelPointForLocation(vertice1.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
-        let v2 = pixelPointForLocation(vertice2.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
-        let v3 = pixelPointForLocation(vertice3.location, locationsAreInScreenSpace: locationsAreInScreenSpace)
+        let v1 = pixelPointForLocation(vertice1.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        let v2 = pixelPointForLocation(vertice2.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        let v3 = pixelPointForLocation(vertice3.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         
         drawPoint(v1)
         drawPoint(v2)

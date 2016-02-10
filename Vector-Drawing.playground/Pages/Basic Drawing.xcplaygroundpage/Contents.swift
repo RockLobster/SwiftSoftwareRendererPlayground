@@ -11,12 +11,12 @@ let bitmap = Bitmap(width: 100, height: 100)
 
 bitmap.clearWithBlack()
 let lineDrawer = BresenhamLineDrawer(target: bitmap)
-lineDrawer.drawLine((0, 20), end: (Float(bitmap.width-1), Float(20)), color: Color.Green())
-lineDrawer.drawLine((20, 0), end: (Float(20), Float(bitmap.height-1)), color: Color.Green())
-lineDrawer.drawLine((0, 0),  end: (Float(bitmap.width-1), Float(bitmap.height/2-1)), color: Color.White())
-lineDrawer.drawLine((50,60), end: (50,60), color: Color.Green())
-lineDrawer.drawLine((0, 0),  end: (99, 99), color: Color.Blue())
-lineDrawer.drawLine((0, 99), end: (99, 70), color: Color.Red())
+lineDrawer.drawLine(Point(0, 20), end: Point(Float(bitmap.width-1), Float(20)), color: Color.Green())
+lineDrawer.drawLine(Point(20, 0), end: Point(Float(20), Float(bitmap.height-1)), color: Color.Green())
+lineDrawer.drawLine(Point(0, 0),  end: Point(Float(bitmap.width-1), Float(bitmap.height/2-1)), color: Color.White())
+lineDrawer.drawLine(Point(50,60), end: Point(50,60), color: Color.Green())
+lineDrawer.drawLine(Point(0, 0),  end: Point(99, 99), color: Color.Blue())
+lineDrawer.drawLine(Point(0, 99), end: Point(99, 70), color: Color.Red())
 imageView.image = bitmap.createUIImage()
 
 //Triangle 1
@@ -48,7 +48,7 @@ let triangle4 = [
 ]
 
 func render(triangle: [AttributedVector], rasterer: TriangleRasterer) {
-    triangleRasterer.rasterTriangle(triangle[0], vertice2: triangle[1], vertice3: triangle[2], locationsAreInScreenSpace: false)
+    triangleRasterer.rasterTriangle(triangle[0], vertice2: triangle[1], vertice3: triangle[2], locationsAreInNormalizedDeviceCoordinates: false)
 }
 
 var triangleRasterer: TriangleRasterer
@@ -69,4 +69,3 @@ render(triangle2, rasterer: triangleRasterer)
 render(triangle3, rasterer: triangleRasterer)
 render(triangle4, rasterer: triangleRasterer)
 imageView.image = bitmap.createUIImage()
-

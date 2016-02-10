@@ -5,6 +5,15 @@ public protocol LinearInterpolatable {
     static func linearInterpolate (first: Self, second: Self, alpha: FloatType) -> Self
 }
 
+func alphaForValueInRange(value: FloatType, range: BoundingBoxRange) -> FloatType {
+    let rangeWidth = range.max - range.min
+    let relativeValue = value - range.min
+    let alpha = relativeValue / rangeWidth
+    
+    assert(alpha >= 0 && alpha <= 1)
+    return alpha
+}
+
 extension FloatType : LinearInterpolatable {
     public static func linearInterpolate (first: FloatType, second: FloatType, alpha: FloatType) -> FloatType {
         return (1 - alpha) * first + alpha * second
@@ -14,6 +23,23 @@ extension FloatType : LinearInterpolatable {
 extension UInt8 : LinearInterpolatable {
     public static func linearInterpolate(first: UInt8, second: UInt8, alpha: FloatType) -> UInt8 {
         return UInt8( round( Float.linearInterpolate(FloatType(first), second: FloatType(second), alpha: alpha)))
+    }
+}
+
+extension Point {
+    public static func linearInterpolate(first: Point, second: Point, alpha: FloatType) -> Point {
+        return Point(
+            FloatType.linearInterpolate(first.x, second: second.x, alpha: alpha),
+            FloatType.linearInterpolate(first.y, second: second.y, alpha: alpha)
+        )
+    }
+    
+    public static func linearInterpolate(first: Point?, second: Point?, alpha: FloatType) -> Point? {
+        guard let firstUnwrapped = first, let secondUnwrapped = second else {
+            return nil
+        }
+        
+        return linearInterpolate(firstUnwrapped, second: secondUnwrapped, alpha: alpha)
     }
 }
 
@@ -50,19 +76,12 @@ extension Color : LinearInterpolatable {
 
 extension AttributedVector : LinearInterpolatable {
     public static func linearInterpolate(first: AttributedVector, second: AttributedVector, alpha: FloatType) -> AttributedVector {
-        return AttributedVector(
+        var result = AttributedVector(
             Vector3D.linearInterpolate(first.location, second: second.location, alpha: alpha),
             Color.linearInterpolate(first.color, second: second.color, alpha: alpha),
             Vector3D.linearInterpolate(first.normal, second: second.normal, alpha: alpha)
         )
+        result.windowCoordinate = Point.linearInterpolate(first.windowCoordinate, second: second.windowCoordinate, alpha: alpha)
+        return result
     }
-}
-
-func alphaForValueInRange(value: FloatType, range: BoundingBoxRange) -> FloatType {
-    let rangeWidth = range.max - range.min
-    let relativeValue = value - range.min
-    let alpha = relativeValue / rangeWidth
-    
-    assert(alpha >= 0 && alpha <= 1)
-    return alpha
 }

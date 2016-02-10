@@ -47,8 +47,8 @@ public class BresenhamLineDrawer: LineDrawer {
         
         let isSteep = abs(end.y-start.y) > abs(end.x-start.x)
         if (isSteep) {
-            start = (start.y, start.x)
-            end   = (end.y,   end.x)
+            start = Point(start.y, start.x)
+            end   = Point(end.y,   end.x)
         }
         
         if (end.x < start.x) {

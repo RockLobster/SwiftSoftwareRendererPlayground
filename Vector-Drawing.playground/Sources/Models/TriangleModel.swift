@@ -63,7 +63,7 @@ extension TriangleModel {
             rasterer.rasterTriangle(vertex1,
                 vertice2: vertex2,
                 vertice3: vertex3,
-                locationsAreInScreenSpace: true)
+                locationsAreInNormalizedDeviceCoordinates: true)
         }
     }
 }
