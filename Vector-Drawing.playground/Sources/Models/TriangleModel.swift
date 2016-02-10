@@ -21,6 +21,7 @@ public class TriangleModel {
     
     public var geometricVertices = [Vector3D]()
     public var textureCoordinates = [Vector3D]()
+    public var colors = [Color]()
     public var normals = [Vector3D]()
     public var faceIndices = [FaceVertexIndices]()
     
@@ -51,8 +52,12 @@ extension TriangleModel {
         if let normalIndex = indices.normalIndex {
             normal = normals[normalIndex]
         }
+        var color: Color? = nil
+        if (colors.count > indices.vertexIndex) {
+            color = colors[indices.vertexIndex]
+        }
         
-        return AttributedVector(location, nil, normal)
+        return AttributedVector(location, color, normal)
     }
     
     private func windingOrderForTriangle(var vertice1: Vector3D, var vertice2: Vector3D, var vertice3: Vector3D) -> WindingOrder {

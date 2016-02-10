@@ -47,37 +47,34 @@ public struct BoundingBox {
 
 extension BoundingBox {
 
-    public func calculateBestProjectionMatrixForTargetAspectRatio(targetAspectRatio: FloatType) -> Matrix4x4 {
+    public func calculateBestProjectionMatrixForTargetAspectRatio(targetAspectRatio: FloatType, zoomFactor: FloatType = 1.0) -> Matrix4x4 {
         
         let boundingBoxAspectRatio = width/height
         
         let relativeAspectRatio = boundingBoxAspectRatio / targetAspectRatio
         
+        var top    = yRange.max
+        var bottom = yRange.min
+        var left   = xRange.min
+        var right  = xRange.max
+        
         let bboxIsWiderThanBitmap = relativeAspectRatio > 1.0
         if (bboxIsWiderThanBitmap) {
-            print("BBox is wider")
             let bestProjectionHeight = height * relativeAspectRatio
-            let top = yRange.center + bestProjectionHeight/2
-            let bottom = yRange.center - bestProjectionHeight/2
-            
-            return Matrix4x4.orthographicProjectionMatrix(
-                xRange.min,
-                right: xRange.max,
-                bottom: bottom,
-                top: top)
+            top = yRange.center + bestProjectionHeight/2
+            bottom = yRange.center - bestProjectionHeight/2
             
         } else {
-            print("BBox is narrower")
-            
             let bestProjectionWidth = width / relativeAspectRatio
-            let right = xRange.center + bestProjectionWidth/2
-            let left = xRange.center - bestProjectionWidth/2
-            
-            return Matrix4x4.orthographicProjectionMatrix(
-                left,
-                right: right,
-                bottom: yRange.min,
-                top: yRange.max)
+            right = xRange.center + bestProjectionWidth/2
+            left = xRange.center - bestProjectionWidth/2
         }
+        
+        return Matrix4x4.orthographicProjectionMatrix(
+            left * zoomFactor,
+            right: right * zoomFactor,
+            bottom: bottom * zoomFactor,
+            top: top * zoomFactor
+        )
     }
 }
