@@ -12,12 +12,20 @@ public struct FaceVertexIndices {
     }
 }
 
+public enum WindingOrder {
+    case Clockwise
+    case CounterClockwise
+}
+
 public class TriangleModel {
     
     public var geometricVertices = [Vector3D]()
     public var textureCoordinates = [Vector3D]()
     public var normals = [Vector3D]()
     public var faceIndices = [FaceVertexIndices]()
+    
+    public var windingOrder: WindingOrder = WindingOrder.CounterClockwise
+    
     public var boundingBox: BoundingBox? {
         
         let minX = self.geometricVertices.reduce(Float.infinity, combine:{return min($0, $1.x)})
