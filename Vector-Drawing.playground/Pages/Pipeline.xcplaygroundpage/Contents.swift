@@ -4,7 +4,10 @@ import UIKit
 
 func loadModel() -> TriangleModel? {
     
-    guard let modelPath = NSBundle.mainBundle().pathForResource("BB8/bb8", ofType: "obj") else {
+    let name = "BB8/bb8"
+//    let name = "house interior"
+    
+    guard let modelPath = NSBundle.mainBundle().pathForResource(name, ofType: "obj") else {
         print("Can't find model file")
         return nil
     }
@@ -32,17 +35,19 @@ if let model = model {
     let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio)
     let vertexShader = SimpleProjectionShader(projectionMatrix)
     
-    func renderUsingRasterer(rasterer: TriangleRasterer) -> UIImage? {
+    func renderUsingRasterer(rasterer: TriangleRasterer, cullBackfaces: Bool) -> UIImage? {
         bitmap.clearWithBlack()
-        model.renderUsing(vertexShader, rasterer: rasterer)
+        model.renderUsingVertexShader(vertexShader, rasterer: rasterer, cullBackFaces: cullBackfaces)
         return bitmap.createUIImage()
     }
     
-    imageView.image = renderUsingRasterer( PointCloudRasterer(target: bitmap, pointColor: Color.White()) )
+    imageView.image = renderUsingRasterer( PointCloudRasterer(target: bitmap, pointColor: Color.White()), cullBackfaces: false)
     
-    imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()) )
+    imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()), cullBackfaces: false)
     
-    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)) )
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: false)
+    
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: true)
 }
 
 //: [Next](@next)

@@ -55,7 +55,21 @@ extension TriangleModel {
         return AttributedVector(location, nil, normal)
     }
     
-    public func renderUsing(vertexShader :VertexShader, rasterer: TriangleRasterer) {
+    private func windingOrderForTriangle(var vertice1: Vector3D, var vertice2: Vector3D, var vertice3: Vector3D) -> WindingOrder {
+        vertice1.z = 0
+        vertice2.z = 0
+        vertice3.z = 0
+        
+        let crossProductDepth = (vertice2 - vertice1).crossProductWith(vertice3 - vertice1).z
+        
+        let result = (crossProductDepth > 0) ? WindingOrder.CounterClockwise : WindingOrder.Clockwise
+        
+        //print("Z: [\(crossProductDepth)] -> \(result)")
+        
+        return result
+    }
+    
+    public func renderUsingVertexShader(vertexShader:VertexShader, rasterer: TriangleRasterer, cullBackFaces: Bool = false) {
         
         for i in 0..<self.faceIndices.count/3 {
             
@@ -63,10 +77,9 @@ extension TriangleModel {
             let vertex2 = vertexShader(self.attributedVectorFor(self.faceIndices[i * 3 + 1]))
             let vertex3 = vertexShader(self.attributedVectorFor(self.faceIndices[i * 3 + 2]))
             
-//            print("Triangle \(i)")
-//            print(vertex1)
-//            print(vertex2)
-//            print(vertex3)
+            if (cullBackFaces && self.windingOrder != windingOrderForTriangle(vertex1.location, vertice2: vertex2.location, vertice3: vertex3.location)) {
+                continue
+            }
             
             rasterer.rasterTriangle(vertex1,
                 vertice2: vertex2,
