@@ -1,6 +1,5 @@
 import Foundation
 import CoreGraphics
-import UIKit
 
 public class Bitmap {
     public let width: Int
@@ -48,10 +47,6 @@ public class Bitmap {
     
     public func createCGImage() -> CGImage? {
         return CGBitmapContextCreateImage(context)
-    }
-    
-    public func createUIImage() -> UIImage? {
-        return UIImage(CGImage: createCGImage()!, scale: 2.0, orientation: UIImageOrientation.DownMirrored)
     }
     
     private func indexIsValidForX(x: Int, y: Int, byte: Int) -> Bool {

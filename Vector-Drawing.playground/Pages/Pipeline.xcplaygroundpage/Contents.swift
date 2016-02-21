@@ -24,8 +24,8 @@ func loadColorCube() -> TriangleModel? {
     return ColorCube()
 }
 
-let model = loadModel()
-//let model = loadColorCube()
+//let model = loadModel()
+let model = loadColorCube()
 
 if let model = model {
     assert(model.faceIndices.count % 3 == 0)
@@ -37,7 +37,7 @@ if let model = model {
     
     let bitmap = Bitmap(width: 200, height: 200)
     let boundingBox = model.boundingBox!
-    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.0)
+    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.3)
     let vertexShader = SimpleProjectionShader(projectionMatrix)
     
     func renderUsingRasterer(rasterer: TriangleRasterer, cullBackfaces: Bool) -> UIImage? {
@@ -50,10 +50,11 @@ if let model = model {
     
     imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()), cullBackfaces: false)
     
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: DefaultColorShader), cullBackfaces: true)
+    
     imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: false)
     
     imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: true)
-    
 }
 
 //: [Next](@next)

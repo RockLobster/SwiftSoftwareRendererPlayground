@@ -67,7 +67,7 @@ extension TriangleModel {
         
         let crossProductDepth = (vertice2 - vertice1).crossProductWith(vertice3 - vertice1).z
         
-        let result = (crossProductDepth > 0) ? WindingOrder.CounterClockwise : WindingOrder.Clockwise
+        let result = (crossProductDepth < 0) ? WindingOrder.CounterClockwise : WindingOrder.Clockwise
         
         //print("Z: [\(crossProductDepth)] -> \(result)")
         
