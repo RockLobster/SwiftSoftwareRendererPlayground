@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:RenderingBase/RenderingBase.xcodeproj">
+      location = "group:RenderingBase/../VectorDrawing.playground">
    </FileRef>
    <FileRef
-      location = "group:Vector-Drawing.playground">
+      location = "group:RenderingBase/RenderingBase.xcodeproj">
    </FileRef>
 </Workspace>

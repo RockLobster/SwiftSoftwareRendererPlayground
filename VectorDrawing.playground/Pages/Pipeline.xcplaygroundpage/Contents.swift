@@ -1,6 +1,7 @@
 //: [Previous](@previous)
 
 import UIKit
+import RenderingBase
 
 func loadModel() -> TriangleModel? {
     
