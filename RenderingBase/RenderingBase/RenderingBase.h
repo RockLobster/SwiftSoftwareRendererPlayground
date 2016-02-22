@@ -6,7 +6,7 @@
 //  Copyright © 2016 Rainer Schlönvoigt. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for RenderingBase.
 FOUNDATION_EXPORT double RenderingBaseVersionNumber;

@@ -7,47 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		872939191C7A2B7700BAF543 /* RenderingBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 872939181C7A2B7700BAF543 /* RenderingBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		872939201C7A2B7700BAF543 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 872939151C7A2B7700BAF543 /* RenderingBase.framework */; };
-		872939251C7A2B7700BAF543 /* RenderingBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939241C7A2B7700BAF543 /* RenderingBaseTests.swift */; };
-		8729394A1C7A2DC400BAF543 /* AttributedVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939301C7A2DC400BAF543 /* AttributedVector.swift */; };
-		8729394B1C7A2DC400BAF543 /* LinearInterpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939311C7A2DC400BAF543 /* LinearInterpolatable.swift */; };
-		8729394C1C7A2DC400BAF543 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939321C7A2DC400BAF543 /* Matrix.swift */; };
-		8729394D1C7A2DC400BAF543 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939331C7A2DC400BAF543 /* Point.swift */; };
-		8729394E1C7A2DC400BAF543 /* Precision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939341C7A2DC400BAF543 /* Precision.swift */; };
-		8729394F1C7A2DC400BAF543 /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939351C7A2DC400BAF543 /* Vector3D.swift */; };
-		872939501C7A2DC400BAF543 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939361C7A2DC400BAF543 /* Bitmap.swift */; };
-		872939511C7A2DC400BAF543 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939371C7A2DC400BAF543 /* Color.swift */; };
-		872939521C7A2DC400BAF543 /* ObjLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939391C7A2DC400BAF543 /* ObjLoader.swift */; };
-		872939531C7A2DC400BAF543 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393A1C7A2DC400BAF543 /* StreamReader.swift */; };
-		872939541C7A2DC400BAF543 /* BresenhamLineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393C1C7A2DC400BAF543 /* BresenhamLineDrawer.swift */; };
-		872939551C7A2DC400BAF543 /* LineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393D1C7A2DC400BAF543 /* LineDrawer.swift */; };
-		872939561C7A2DC400BAF543 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393F1C7A2DC400BAF543 /* BoundingBox.swift */; };
-		872939571C7A2DC400BAF543 /* ColorCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939401C7A2DC400BAF543 /* ColorCube.swift */; };
-		872939581C7A2DC400BAF543 /* TriangleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939411C7A2DC400BAF543 /* TriangleModel.swift */; };
-		872939591C7A2DC400BAF543 /* FragmentShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939431C7A2DC400BAF543 /* FragmentShader.swift */; };
-		8729395A1C7A2DC400BAF543 /* VertexShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939441C7A2DC400BAF543 /* VertexShader.swift */; };
-		8729395B1C7A2DC400BAF543 /* FillingRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939461C7A2DC400BAF543 /* FillingRasterer.swift */; };
-		8729395C1C7A2DC400BAF543 /* PointCloudRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939471C7A2DC400BAF543 /* PointCloudRasterer.swift */; };
-		8729395D1C7A2DC400BAF543 /* TriangleRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939481C7A2DC400BAF543 /* TriangleRasterer.swift */; };
-		8729395E1C7A2DC400BAF543 /* WireframeRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939491C7A2DC400BAF543 /* WireframeRasterer.swift */; };
+		87BDC2361C7B19590012A5B4 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */; };
+		87BDC2431C7B19600012A5B4 /* RenderingBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 872939181C7A2B7700BAF543 /* RenderingBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87BDC2441C7B19A00012A5B4 /* RenderingBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939241C7A2B7700BAF543 /* RenderingBaseTests.swift */; };
+		87BDC2451C7B19B60012A5B4 /* AttributedVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939301C7A2DC400BAF543 /* AttributedVector.swift */; };
+		87BDC2461C7B19B60012A5B4 /* LinearInterpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939311C7A2DC400BAF543 /* LinearInterpolatable.swift */; };
+		87BDC2471C7B19B60012A5B4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939321C7A2DC400BAF543 /* Matrix.swift */; };
+		87BDC2481C7B19B60012A5B4 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939331C7A2DC400BAF543 /* Point.swift */; };
+		87BDC2491C7B19B60012A5B4 /* Precision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939341C7A2DC400BAF543 /* Precision.swift */; };
+		87BDC24A1C7B19B60012A5B4 /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939351C7A2DC400BAF543 /* Vector3D.swift */; };
+		87BDC24B1C7B19C00012A5B4 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939361C7A2DC400BAF543 /* Bitmap.swift */; };
+		87BDC24C1C7B19C30012A5B4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939371C7A2DC400BAF543 /* Color.swift */; };
+		87BDC24D1C7B19C70012A5B4 /* ObjLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939391C7A2DC400BAF543 /* ObjLoader.swift */; };
+		87BDC24E1C7B19CA0012A5B4 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393A1C7A2DC400BAF543 /* StreamReader.swift */; };
+		87BDC24F1C7B19CE0012A5B4 /* BresenhamLineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393C1C7A2DC400BAF543 /* BresenhamLineDrawer.swift */; };
+		87BDC2501C7B19D10012A5B4 /* LineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393D1C7A2DC400BAF543 /* LineDrawer.swift */; };
+		87BDC2511C7B19D60012A5B4 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393F1C7A2DC400BAF543 /* BoundingBox.swift */; };
+		87BDC2521C7B19DC0012A5B4 /* ColorCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939401C7A2DC400BAF543 /* ColorCube.swift */; };
+		87BDC2531C7B19DC0012A5B4 /* TriangleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939411C7A2DC400BAF543 /* TriangleModel.swift */; };
+		87BDC2541C7B19E40012A5B4 /* FillingRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939461C7A2DC400BAF543 /* FillingRasterer.swift */; };
+		87BDC2551C7B19E40012A5B4 /* PointCloudRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939471C7A2DC400BAF543 /* PointCloudRasterer.swift */; };
+		87BDC2561C7B19E40012A5B4 /* TriangleRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939481C7A2DC400BAF543 /* TriangleRasterer.swift */; };
+		87BDC2571C7B19E40012A5B4 /* WireframeRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939491C7A2DC400BAF543 /* WireframeRasterer.swift */; };
+		87BDC2581C7B19E90012A5B4 /* FragmentShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939431C7A2DC400BAF543 /* FragmentShader.swift */; };
+		87BDC2591C7B19E90012A5B4 /* VertexShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939441C7A2DC400BAF543 /* VertexShader.swift */; };
+		87BDC2691C7B1B6B0012A5B4 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */; };
+		87BDC2761C7B1BAF0012A5B4 /* RenderingBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 872939181C7A2B7700BAF543 /* RenderingBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87BDC2771C7B1BB40012A5B4 /* AttributedVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939301C7A2DC400BAF543 /* AttributedVector.swift */; };
+		87BDC2781C7B1BB40012A5B4 /* LinearInterpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939311C7A2DC400BAF543 /* LinearInterpolatable.swift */; };
+		87BDC2791C7B1BB40012A5B4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939321C7A2DC400BAF543 /* Matrix.swift */; };
+		87BDC27A1C7B1BB40012A5B4 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939331C7A2DC400BAF543 /* Point.swift */; };
+		87BDC27B1C7B1BB40012A5B4 /* Precision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939341C7A2DC400BAF543 /* Precision.swift */; };
+		87BDC27C1C7B1BB40012A5B4 /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939351C7A2DC400BAF543 /* Vector3D.swift */; };
+		87BDC27D1C7B1BB80012A5B4 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939361C7A2DC400BAF543 /* Bitmap.swift */; };
+		87BDC27E1C7B1BB80012A5B4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939371C7A2DC400BAF543 /* Color.swift */; };
+		87BDC27F1C7B1BBC0012A5B4 /* ObjLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939391C7A2DC400BAF543 /* ObjLoader.swift */; };
+		87BDC2801C7B1BBC0012A5B4 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393A1C7A2DC400BAF543 /* StreamReader.swift */; };
+		87BDC2811C7B1BC00012A5B4 /* BresenhamLineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393C1C7A2DC400BAF543 /* BresenhamLineDrawer.swift */; };
+		87BDC2821C7B1BC00012A5B4 /* LineDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393D1C7A2DC400BAF543 /* LineDrawer.swift */; };
+		87BDC2831C7B1BC70012A5B4 /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8729393F1C7A2DC400BAF543 /* BoundingBox.swift */; };
+		87BDC2841C7B1BC70012A5B4 /* ColorCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939401C7A2DC400BAF543 /* ColorCube.swift */; };
+		87BDC2851C7B1BC70012A5B4 /* TriangleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939411C7A2DC400BAF543 /* TriangleModel.swift */; };
+		87BDC2861C7B1BCC0012A5B4 /* FillingRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939461C7A2DC400BAF543 /* FillingRasterer.swift */; };
+		87BDC2871C7B1BCC0012A5B4 /* PointCloudRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939471C7A2DC400BAF543 /* PointCloudRasterer.swift */; };
+		87BDC2881C7B1BCC0012A5B4 /* TriangleRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939481C7A2DC400BAF543 /* TriangleRasterer.swift */; };
+		87BDC2891C7B1BCC0012A5B4 /* WireframeRasterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939491C7A2DC400BAF543 /* WireframeRasterer.swift */; };
+		87BDC28A1C7B1BD00012A5B4 /* FragmentShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939431C7A2DC400BAF543 /* FragmentShader.swift */; };
+		87BDC28B1C7B1BD00012A5B4 /* VertexShader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939441C7A2DC400BAF543 /* VertexShader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		872939211C7A2B7700BAF543 /* PBXContainerItemProxy */ = {
+		87BDC2371C7B19590012A5B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8729390C1C7A2B7700BAF543 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 872939141C7A2B7700BAF543;
-			remoteInfo = RenderingBase;
+			remoteGlobalIDString = 87BDC22B1C7B19590012A5B4;
+			remoteInfo = RenderingBaseIOS;
+		};
+		87BDC26A1C7B1B6B0012A5B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8729390C1C7A2B7700BAF543 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87BDC25E1C7B1B6B0012A5B4;
+			remoteInfo = RenderingBaseOSX;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		872939151C7A2B7700BAF543 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		872939181C7A2B7700BAF543 /* RenderingBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RenderingBase.h; sourceTree = "<group>"; };
-		8729391A1C7A2B7700BAF543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8729391F1C7A2B7700BAF543 /* RenderingBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		872939241C7A2B7700BAF543 /* RenderingBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderingBaseTests.swift; sourceTree = "<group>"; };
 		872939261C7A2B7700BAF543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		872939301C7A2DC400BAF543 /* AttributedVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedVector.swift; sourceTree = "<group>"; };
@@ -71,21 +98,41 @@
 		872939471C7A2DC400BAF543 /* PointCloudRasterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointCloudRasterer.swift; sourceTree = "<group>"; };
 		872939481C7A2DC400BAF543 /* TriangleRasterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRasterer.swift; sourceTree = "<group>"; };
 		872939491C7A2DC400BAF543 /* WireframeRasterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WireframeRasterer.swift; sourceTree = "<group>"; };
+		873654191C7B6050000E486B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BDC2351C7B19590012A5B4 /* RenderingBaseIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingBaseIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BDC2681C7B1B6B0012A5B4 /* RenderingBaseOSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingBaseOSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		872939111C7A2B7700BAF543 /* Frameworks */ = {
+		87BDC2281C7B19590012A5B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8729391C1C7A2B7700BAF543 /* Frameworks */ = {
+		87BDC2321C7B19590012A5B4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				872939201C7A2B7700BAF543 /* RenderingBase.framework in Frameworks */,
+				87BDC2361C7B19590012A5B4 /* RenderingBase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC25B1C7B1B6B0012A5B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC2651C7B1B6B0012A5B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87BDC2691C7B1B6B0012A5B4 /* RenderingBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +151,10 @@
 		872939161C7A2B7700BAF543 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				872939151C7A2B7700BAF543 /* RenderingBase.framework */,
-				8729391F1C7A2B7700BAF543 /* RenderingBaseTests.xctest */,
+				87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */,
+				87BDC2351C7B19590012A5B4 /* RenderingBaseIOSTests.xctest */,
+				87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */,
+				87BDC2681C7B1B6B0012A5B4 /* RenderingBaseOSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +162,7 @@
 		872939171C7A2B7700BAF543 /* RenderingBase */ = {
 			isa = PBXGroup;
 			children = (
+				873654191C7B6050000E486B /* Info.plist */,
 				872939181C7A2B7700BAF543 /* RenderingBase.h */,
 				8729392F1C7A2DC400BAF543 /* Basics */,
 				872939361C7A2DC400BAF543 /* Bitmap.swift */,
@@ -122,7 +172,6 @@
 				8729393E1C7A2DC400BAF543 /* Models */,
 				872939421C7A2DC400BAF543 /* Shaders */,
 				872939451C7A2DC400BAF543 /* TriangleRasterer */,
-				8729391A1C7A2B7700BAF543 /* Info.plist */,
 			);
 			path = RenderingBase;
 			sourceTree = "<group>";
@@ -200,51 +249,95 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		872939121C7A2B7700BAF543 /* Headers */ = {
+		87BDC2291C7B19590012A5B4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				872939191C7A2B7700BAF543 /* RenderingBase.h in Headers */,
+				87BDC2431C7B19600012A5B4 /* RenderingBase.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC25C1C7B1B6B0012A5B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87BDC2761C7B1BAF0012A5B4 /* RenderingBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		872939141C7A2B7700BAF543 /* RenderingBase */ = {
+		87BDC22B1C7B19590012A5B4 /* RenderingBaseIOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 872939291C7A2B7700BAF543 /* Build configuration list for PBXNativeTarget "RenderingBase" */;
+			buildConfigurationList = 87BDC23D1C7B19590012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseIOS" */;
 			buildPhases = (
-				872939101C7A2B7700BAF543 /* Sources */,
-				872939111C7A2B7700BAF543 /* Frameworks */,
-				872939121C7A2B7700BAF543 /* Headers */,
-				872939131C7A2B7700BAF543 /* Resources */,
+				87BDC2271C7B19590012A5B4 /* Sources */,
+				87BDC2281C7B19590012A5B4 /* Frameworks */,
+				87BDC2291C7B19590012A5B4 /* Headers */,
+				87BDC22A1C7B19590012A5B4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = RenderingBase;
-			productName = RenderingBase;
-			productReference = 872939151C7A2B7700BAF543 /* RenderingBase.framework */;
+			name = RenderingBaseIOS;
+			productName = RenderingBaseIOS;
+			productReference = 87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8729391E1C7A2B7700BAF543 /* RenderingBaseTests */ = {
+		87BDC2341C7B19590012A5B4 /* RenderingBaseIOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8729392C1C7A2B7700BAF543 /* Build configuration list for PBXNativeTarget "RenderingBaseTests" */;
+			buildConfigurationList = 87BDC2401C7B19590012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseIOSTests" */;
 			buildPhases = (
-				8729391B1C7A2B7700BAF543 /* Sources */,
-				8729391C1C7A2B7700BAF543 /* Frameworks */,
-				8729391D1C7A2B7700BAF543 /* Resources */,
+				87BDC2311C7B19590012A5B4 /* Sources */,
+				87BDC2321C7B19590012A5B4 /* Frameworks */,
+				87BDC2331C7B19590012A5B4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				872939221C7A2B7700BAF543 /* PBXTargetDependency */,
+				87BDC2381C7B19590012A5B4 /* PBXTargetDependency */,
 			);
-			name = RenderingBaseTests;
-			productName = RenderingBaseTests;
-			productReference = 8729391F1C7A2B7700BAF543 /* RenderingBaseTests.xctest */;
+			name = RenderingBaseIOSTests;
+			productName = RenderingBaseIOSTests;
+			productReference = 87BDC2351C7B19590012A5B4 /* RenderingBaseIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		87BDC25E1C7B1B6B0012A5B4 /* RenderingBaseOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87BDC2701C7B1B6B0012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseOSX" */;
+			buildPhases = (
+				87BDC25A1C7B1B6B0012A5B4 /* Sources */,
+				87BDC25B1C7B1B6B0012A5B4 /* Frameworks */,
+				87BDC25C1C7B1B6B0012A5B4 /* Headers */,
+				87BDC25D1C7B1B6B0012A5B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RenderingBaseOSX;
+			productName = RenderingBaseOSX;
+			productReference = 87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		87BDC2671C7B1B6B0012A5B4 /* RenderingBaseOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87BDC2731C7B1B6B0012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseOSXTests" */;
+			buildPhases = (
+				87BDC2641C7B1B6B0012A5B4 /* Sources */,
+				87BDC2651C7B1B6B0012A5B4 /* Frameworks */,
+				87BDC2661C7B1B6B0012A5B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87BDC26B1C7B1B6B0012A5B4 /* PBXTargetDependency */,
+			);
+			name = RenderingBaseOSXTests;
+			productName = RenderingBaseOSXTests;
+			productReference = 87BDC2681C7B1B6B0012A5B4 /* RenderingBaseOSXTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -257,10 +350,16 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Rainer Schlönvoigt";
 				TargetAttributes = {
-					872939141C7A2B7700BAF543 = {
+					87BDC22B1C7B19590012A5B4 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
-					8729391E1C7A2B7700BAF543 = {
+					87BDC2341C7B19590012A5B4 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87BDC25E1C7B1B6B0012A5B4 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					87BDC2671C7B1B6B0012A5B4 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
@@ -277,21 +376,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				872939141C7A2B7700BAF543 /* RenderingBase */,
-				8729391E1C7A2B7700BAF543 /* RenderingBaseTests */,
+				87BDC22B1C7B19590012A5B4 /* RenderingBaseIOS */,
+				87BDC2341C7B19590012A5B4 /* RenderingBaseIOSTests */,
+				87BDC25E1C7B1B6B0012A5B4 /* RenderingBaseOSX */,
+				87BDC2671C7B1B6B0012A5B4 /* RenderingBaseOSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		872939131C7A2B7700BAF543 /* Resources */ = {
+		87BDC22A1C7B19590012A5B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8729391D1C7A2B7700BAF543 /* Resources */ = {
+		87BDC2331C7B19590012A5B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC25D1C7B1B6B0012A5B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC2661C7B1B6B0012A5B4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,49 +416,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		872939101C7A2B7700BAF543 /* Sources */ = {
+		87BDC2271C7B19590012A5B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				872939531C7A2DC400BAF543 /* StreamReader.swift in Sources */,
-				872939541C7A2DC400BAF543 /* BresenhamLineDrawer.swift in Sources */,
-				8729394E1C7A2DC400BAF543 /* Precision.swift in Sources */,
-				8729394D1C7A2DC400BAF543 /* Point.swift in Sources */,
-				8729394B1C7A2DC400BAF543 /* LinearInterpolatable.swift in Sources */,
-				8729394F1C7A2DC400BAF543 /* Vector3D.swift in Sources */,
-				8729394A1C7A2DC400BAF543 /* AttributedVector.swift in Sources */,
-				8729395C1C7A2DC400BAF543 /* PointCloudRasterer.swift in Sources */,
-				8729395E1C7A2DC400BAF543 /* WireframeRasterer.swift in Sources */,
-				872939511C7A2DC400BAF543 /* Color.swift in Sources */,
-				872939551C7A2DC400BAF543 /* LineDrawer.swift in Sources */,
-				872939581C7A2DC400BAF543 /* TriangleModel.swift in Sources */,
-				872939591C7A2DC400BAF543 /* FragmentShader.swift in Sources */,
-				872939501C7A2DC400BAF543 /* Bitmap.swift in Sources */,
-				8729394C1C7A2DC400BAF543 /* Matrix.swift in Sources */,
-				872939561C7A2DC400BAF543 /* BoundingBox.swift in Sources */,
-				8729395D1C7A2DC400BAF543 /* TriangleRasterer.swift in Sources */,
-				872939571C7A2DC400BAF543 /* ColorCube.swift in Sources */,
-				8729395B1C7A2DC400BAF543 /* FillingRasterer.swift in Sources */,
-				8729395A1C7A2DC400BAF543 /* VertexShader.swift in Sources */,
-				872939521C7A2DC400BAF543 /* ObjLoader.swift in Sources */,
+				87BDC24E1C7B19CA0012A5B4 /* StreamReader.swift in Sources */,
+				87BDC24F1C7B19CE0012A5B4 /* BresenhamLineDrawer.swift in Sources */,
+				87BDC2491C7B19B60012A5B4 /* Precision.swift in Sources */,
+				87BDC2481C7B19B60012A5B4 /* Point.swift in Sources */,
+				87BDC2591C7B19E90012A5B4 /* VertexShader.swift in Sources */,
+				87BDC2461C7B19B60012A5B4 /* LinearInterpolatable.swift in Sources */,
+				87BDC24A1C7B19B60012A5B4 /* Vector3D.swift in Sources */,
+				87BDC2451C7B19B60012A5B4 /* AttributedVector.swift in Sources */,
+				87BDC24C1C7B19C30012A5B4 /* Color.swift in Sources */,
+				87BDC2501C7B19D10012A5B4 /* LineDrawer.swift in Sources */,
+				87BDC2561C7B19E40012A5B4 /* TriangleRasterer.swift in Sources */,
+				87BDC2531C7B19DC0012A5B4 /* TriangleModel.swift in Sources */,
+				87BDC2571C7B19E40012A5B4 /* WireframeRasterer.swift in Sources */,
+				87BDC24B1C7B19C00012A5B4 /* Bitmap.swift in Sources */,
+				87BDC2471C7B19B60012A5B4 /* Matrix.swift in Sources */,
+				87BDC2511C7B19D60012A5B4 /* BoundingBox.swift in Sources */,
+				87BDC2551C7B19E40012A5B4 /* PointCloudRasterer.swift in Sources */,
+				87BDC2541C7B19E40012A5B4 /* FillingRasterer.swift in Sources */,
+				87BDC2521C7B19DC0012A5B4 /* ColorCube.swift in Sources */,
+				87BDC2581C7B19E90012A5B4 /* FragmentShader.swift in Sources */,
+				87BDC24D1C7B19C70012A5B4 /* ObjLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8729391B1C7A2B7700BAF543 /* Sources */ = {
+		87BDC2311C7B19590012A5B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				872939251C7A2B7700BAF543 /* RenderingBaseTests.swift in Sources */,
+				87BDC2441C7B19A00012A5B4 /* RenderingBaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC25A1C7B1B6B0012A5B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87BDC2801C7B1BBC0012A5B4 /* StreamReader.swift in Sources */,
+				87BDC2811C7B1BC00012A5B4 /* BresenhamLineDrawer.swift in Sources */,
+				87BDC27B1C7B1BB40012A5B4 /* Precision.swift in Sources */,
+				87BDC27A1C7B1BB40012A5B4 /* Point.swift in Sources */,
+				87BDC28B1C7B1BD00012A5B4 /* VertexShader.swift in Sources */,
+				87BDC2781C7B1BB40012A5B4 /* LinearInterpolatable.swift in Sources */,
+				87BDC27C1C7B1BB40012A5B4 /* Vector3D.swift in Sources */,
+				87BDC2771C7B1BB40012A5B4 /* AttributedVector.swift in Sources */,
+				87BDC27E1C7B1BB80012A5B4 /* Color.swift in Sources */,
+				87BDC2821C7B1BC00012A5B4 /* LineDrawer.swift in Sources */,
+				87BDC2881C7B1BCC0012A5B4 /* TriangleRasterer.swift in Sources */,
+				87BDC2851C7B1BC70012A5B4 /* TriangleModel.swift in Sources */,
+				87BDC2891C7B1BCC0012A5B4 /* WireframeRasterer.swift in Sources */,
+				87BDC27D1C7B1BB80012A5B4 /* Bitmap.swift in Sources */,
+				87BDC2791C7B1BB40012A5B4 /* Matrix.swift in Sources */,
+				87BDC2831C7B1BC70012A5B4 /* BoundingBox.swift in Sources */,
+				87BDC2871C7B1BCC0012A5B4 /* PointCloudRasterer.swift in Sources */,
+				87BDC2861C7B1BCC0012A5B4 /* FillingRasterer.swift in Sources */,
+				87BDC2841C7B1BC70012A5B4 /* ColorCube.swift in Sources */,
+				87BDC28A1C7B1BD00012A5B4 /* FragmentShader.swift in Sources */,
+				87BDC27F1C7B1BBC0012A5B4 /* ObjLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BDC2641C7B1B6B0012A5B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		872939221C7A2B7700BAF543 /* PBXTargetDependency */ = {
+		87BDC2381C7B19590012A5B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 872939141C7A2B7700BAF543 /* RenderingBase */;
-			targetProxy = 872939211C7A2B7700BAF543 /* PBXContainerItemProxy */;
+			target = 87BDC22B1C7B19590012A5B4 /* RenderingBaseIOS */;
+			targetProxy = 87BDC2371C7B19590012A5B4 /* PBXContainerItemProxy */;
+		};
+		87BDC26B1C7B1B6B0012A5B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87BDC25E1C7B1B6B0012A5B4 /* RenderingBaseOSX */;
+			targetProxy = 87BDC26A1C7B1B6B0012A5B4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -369,6 +524,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -385,13 +541,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VALID_ARCHS = "i386 x86_64 armv7s armv7 arm64";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -418,6 +570,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -428,79 +581,148 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
-				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
-				VALID_ARCHS = "i386 x86_64 armv7s armv7 arm64";
+				ONLY_ACTIVE_ARCH = NO;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		8729392A1C7A2B7700BAF543 /* Debug */ = {
+		87BDC23E1C7B19590012A5B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = RenderingBase/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RenderingBase/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseIOS;
+				PRODUCT_NAME = RenderingBase;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		8729392B1C7A2B7700BAF543 /* Release */ = {
+		87BDC23F1C7B19590012A5B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = RenderingBase/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RenderingBase/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBase;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseIOS;
+				PRODUCT_NAME = RenderingBase;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		8729392D1C7A2B7700BAF543 /* Debug */ = {
+		87BDC2411C7B19590012A5B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)",
-					"$(inherited)",
-				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RenderingBaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseTests;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseIOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		8729392E1C7A2B7700BAF543 /* Release */ = {
+		87BDC2421C7B19590012A5B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = RenderingBaseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseIOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87BDC2711C7B1B6B0012A5B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)",
-					"$(inherited)",
-				);
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/RenderingBase/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseOSX;
+				PRODUCT_NAME = RenderingBase;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		87BDC2721C7B1B6B0012A5B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/RenderingBase/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseOSX;
+				PRODUCT_NAME = RenderingBase;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+		87BDC2741C7B1B6B0012A5B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = RenderingBaseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseTests;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseOSXTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		87BDC2751C7B1B6B0012A5B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RenderingBaseTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RenderingBaseOSXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -516,21 +738,41 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		872939291C7A2B7700BAF543 /* Build configuration list for PBXNativeTarget "RenderingBase" */ = {
+		87BDC23D1C7B19590012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseIOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8729392A1C7A2B7700BAF543 /* Debug */,
-				8729392B1C7A2B7700BAF543 /* Release */,
+				87BDC23E1C7B19590012A5B4 /* Debug */,
+				87BDC23F1C7B19590012A5B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		8729392C1C7A2B7700BAF543 /* Build configuration list for PBXNativeTarget "RenderingBaseTests" */ = {
+		87BDC2401C7B19590012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseIOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8729392D1C7A2B7700BAF543 /* Debug */,
-				8729392E1C7A2B7700BAF543 /* Release */,
+				87BDC2411C7B19590012A5B4 /* Debug */,
+				87BDC2421C7B19590012A5B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87BDC2701C7B1B6B0012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87BDC2711C7B1B6B0012A5B4 /* Debug */,
+				87BDC2721C7B1B6B0012A5B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87BDC2731C7B1B6B0012A5B4 /* Build configuration list for PBXNativeTarget "RenderingBaseOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87BDC2741C7B1B6B0012A5B4 /* Debug */,
+				87BDC2751C7B1B6B0012A5B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

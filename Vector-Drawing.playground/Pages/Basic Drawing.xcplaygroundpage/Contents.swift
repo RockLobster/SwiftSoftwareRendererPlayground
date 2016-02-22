@@ -3,12 +3,6 @@
 import UIKit
 import RenderingBase
 
-extension Bitmap {
-    public func createUIImage() -> UIImage? {
-        return UIImage(CGImage: createCGImage()!, scale: 2.0, orientation: UIImageOrientation.DownMirrored)
-    }
-}
-
 let imageView = UIImageView(frame: CGRectMake(0, 0, 400, 400))
 imageView.contentMode = UIViewContentMode.ScaleAspectFit
 imageView.layer.magnificationFilter = kCAFilterNearest
