@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8736541B1C7B62D4000E486B /* iOSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736541A1C7B62D4000E486B /* iOSExtensions.swift */; };
+		8736541F1C7B6339000E486B /* OSXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736541D1C7B631F000E486B /* OSXExtensions.swift */; };
 		87BDC2361C7B19590012A5B4 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */; };
 		87BDC2431C7B19600012A5B4 /* RenderingBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 872939181C7A2B7700BAF543 /* RenderingBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87BDC2441C7B19A00012A5B4 /* RenderingBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939241C7A2B7700BAF543 /* RenderingBaseTests.swift */; };
@@ -84,7 +86,7 @@
 		872939341C7A2DC400BAF543 /* Precision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Precision.swift; sourceTree = "<group>"; };
 		872939351C7A2DC400BAF543 /* Vector3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3D.swift; sourceTree = "<group>"; };
 		872939361C7A2DC400BAF543 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
-		872939371C7A2DC400BAF543 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		872939371C7A2DC400BAF543 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../Color.swift; sourceTree = "<group>"; };
 		872939391C7A2DC400BAF543 /* ObjLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjLoader.swift; sourceTree = "<group>"; };
 		8729393A1C7A2DC400BAF543 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		8729393C1C7A2DC400BAF543 /* BresenhamLineDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BresenhamLineDrawer.swift; sourceTree = "<group>"; };
@@ -99,6 +101,8 @@
 		872939481C7A2DC400BAF543 /* TriangleRasterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRasterer.swift; sourceTree = "<group>"; };
 		872939491C7A2DC400BAF543 /* WireframeRasterer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WireframeRasterer.swift; sourceTree = "<group>"; };
 		873654191C7B6050000E486B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8736541A1C7B62D4000E486B /* iOSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSExtensions.swift; sourceTree = "<group>"; };
+		8736541D1C7B631F000E486B /* OSXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSXExtensions.swift; sourceTree = "<group>"; };
 		87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BDC2351C7B19590012A5B4 /* RenderingBaseIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingBaseIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,14 +168,14 @@
 			children = (
 				873654191C7B6050000E486B /* Info.plist */,
 				872939181C7A2B7700BAF543 /* RenderingBase.h */,
-				8729392F1C7A2DC400BAF543 /* Basics */,
 				872939361C7A2DC400BAF543 /* Bitmap.swift */,
-				872939371C7A2DC400BAF543 /* Color.swift */,
+				8729392F1C7A2DC400BAF543 /* Basics */,
 				872939381C7A2DC400BAF543 /* File Handling */,
 				8729393B1C7A2DC400BAF543 /* LineDrawer */,
 				8729393E1C7A2DC400BAF543 /* Models */,
 				872939421C7A2DC400BAF543 /* Shaders */,
 				872939451C7A2DC400BAF543 /* TriangleRasterer */,
+				8736541C1C7B62E8000E486B /* Support */,
 			);
 			path = RenderingBase;
 			sourceTree = "<group>";
@@ -188,6 +192,7 @@
 		8729392F1C7A2DC400BAF543 /* Basics */ = {
 			isa = PBXGroup;
 			children = (
+				872939371C7A2DC400BAF543 /* Color.swift */,
 				872939301C7A2DC400BAF543 /* AttributedVector.swift */,
 				872939311C7A2DC400BAF543 /* LinearInterpolatable.swift */,
 				872939321C7A2DC400BAF543 /* Matrix.swift */,
@@ -244,6 +249,15 @@
 				872939491C7A2DC400BAF543 /* WireframeRasterer.swift */,
 			);
 			path = TriangleRasterer;
+			sourceTree = "<group>";
+		};
+		8736541C1C7B62E8000E486B /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8736541A1C7B62D4000E486B /* iOSExtensions.swift */,
+				8736541D1C7B631F000E486B /* OSXExtensions.swift */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +447,7 @@
 				87BDC2561C7B19E40012A5B4 /* TriangleRasterer.swift in Sources */,
 				87BDC2531C7B19DC0012A5B4 /* TriangleModel.swift in Sources */,
 				87BDC2571C7B19E40012A5B4 /* WireframeRasterer.swift in Sources */,
+				8736541B1C7B62D4000E486B /* iOSExtensions.swift in Sources */,
 				87BDC24B1C7B19C00012A5B4 /* Bitmap.swift in Sources */,
 				87BDC2471C7B19B60012A5B4 /* Matrix.swift in Sources */,
 				87BDC2511C7B19D60012A5B4 /* BoundingBox.swift in Sources */,
@@ -474,6 +489,7 @@
 				87BDC2831C7B1BC70012A5B4 /* BoundingBox.swift in Sources */,
 				87BDC2871C7B1BCC0012A5B4 /* PointCloudRasterer.swift in Sources */,
 				87BDC2861C7B1BCC0012A5B4 /* FillingRasterer.swift in Sources */,
+				8736541F1C7B6339000E486B /* OSXExtensions.swift in Sources */,
 				87BDC2841C7B1BC70012A5B4 /* ColorCube.swift in Sources */,
 				87BDC28A1C7B1BD00012A5B4 /* FragmentShader.swift in Sources */,
 				87BDC27F1C7B1BBC0012A5B4 /* ObjLoader.swift in Sources */,
