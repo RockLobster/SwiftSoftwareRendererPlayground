@@ -60,25 +60,29 @@ public class FillingRasterer : TriangleRasterer {
         var verticeSet = [vertice1, vertice2, vertice3]
         
         verticeSet.sortInPlace { return $0.windowCoordinate!.y < $1.windowCoordinate!.y }
-        let firstRange  = verticeSet[1].windowCoordinate!.y - verticeSet[0].windowCoordinate!.y;
-        let secondRange = verticeSet[2].windowCoordinate!.y - verticeSet[1].windowCoordinate!.y;
         
         drawVec(verticeSet[0], shader: self.fragmentShader)
         drawVec(verticeSet[1], shader: self.fragmentShader)
         drawVec(verticeSet[2], shader: self.fragmentShader)
         
-        for offset in 0..<Int(ceil(firstRange)) {
-            let alpha1 = Float(offset)/firstRange;
-            let alpha2 = Float(offset)/(firstRange+secondRange);
+        let yRangeBegin = Int(round(verticeSet[0].windowCoordinate!.y))
+        let yRangeMid   = Int(round(verticeSet[1].windowCoordinate!.y))
+        let yRangeEnd   = Int(round(verticeSet[2].windowCoordinate!.y))
+        
+        for y in yRangeBegin..<yRangeMid {
+            
+            let alpha1 = BoundingBoxRange(min: verticeSet[0].windowCoordinate!.y, max: verticeSet[1].windowCoordinate!.y)!.alphaForValue(FloatType(y))
+            let alpha2 = BoundingBoxRange(min: verticeSet[0].windowCoordinate!.y, max: verticeSet[2].windowCoordinate!.y)!.alphaForValue(FloatType(y))
             
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[1], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
             
             rasterHorizontalLine(interpolatedVector1, interpolatedVector2)
         }
-        for offset in 0..<Int(ceil(secondRange)) {
-            let alpha1 = Float(offset)/secondRange;
-            let alpha2 = (Float(offset)+firstRange)/(firstRange+secondRange);
+        for y in yRangeMid...yRangeEnd {
+            
+            let alpha1 = BoundingBoxRange(min: verticeSet[1].windowCoordinate!.y, max: verticeSet[2].windowCoordinate!.y)!.alphaForValue(FloatType(y))
+            let alpha2 = BoundingBoxRange(min: verticeSet[0].windowCoordinate!.y, max: verticeSet[2].windowCoordinate!.y)!.alphaForValue(FloatType(y))
             
             let interpolatedVector1 = AttributedVector.linearInterpolate(verticeSet[1], second: verticeSet[2], alpha: alpha1)
             let interpolatedVector2 = AttributedVector.linearInterpolate(verticeSet[0], second: verticeSet[2], alpha: alpha2)
@@ -92,28 +96,18 @@ public class FillingRasterer : TriangleRasterer {
     }
     
     func rasterHorizontalLine(start: AttributedVector, _ end: AttributedVector) {
-        
+                
         if (end.windowCoordinate!.x < start.windowCoordinate!.x) {
             return rasterHorizontalLine(end, start)
         }
         
-        let startX = Int(round(start.windowCoordinate!.x))
-        let endX   = Int(round(end.windowCoordinate!.x))
+        let xRangeBegin = max(0, min(target.width-1, Int(round(start.windowCoordinate!.x))))
+        let xRangeEnd   = max(0, min(target.width-1, Int(round(end.windowCoordinate!.x))))
         
-        let startAlpha = calculateAlphaForLocation(FloatType(startX), rangeBegin: start.windowCoordinate!.x, rangeEnd: end.windowCoordinate!.x)
-        let endAlpha = calculateAlphaForLocation(FloatType(endX), rangeBegin: start.windowCoordinate!.x, rangeEnd: end.windowCoordinate!.x)
-        
-        let alphaIncrement = (endAlpha - startAlpha) / FloatType(endX - startX)
-        
-        var currentAlpha = startAlpha
-        
-        for _ in startX...endX {
-            let alphaToUse = min(1.0, max(0.0, currentAlpha))
-            let vectorAtX = AttributedVector.linearInterpolate(start, second: end, alpha: alphaToUse)
-            
+        for x in xRangeBegin...xRangeEnd {
+            let alpha = BoundingBoxRange(min: start.windowCoordinate!.x, max: end.windowCoordinate!.x)!.alphaForValue(FloatType(x))
+            let vectorAtX = AttributedVector.linearInterpolate(start, second: end, alpha: alpha)
             drawVec(vectorAtX, shader: self.fragmentShader)
-            
-            currentAlpha += alphaIncrement
         }
     }
 }

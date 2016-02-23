@@ -50,9 +50,9 @@ public class Bitmap {
     }
     
     private func validateIndexWithX(x: Int, y: Int, byte: Int) {
-//        assert(x >= 0 && x < width, "Index out of range: x = [\(x)]")
-//        assert(y >= 0 && y < height, "Index out of range: y = [\(y)]")
-//        assert(byte >= 0 && byte < bytesPerPixel, "Index out of range: byte = [\(byte)]")
+        assert(x >= 0 && x < width, "Index out of range: x = [\(x)]")
+        assert(y >= 0 && y < height, "Index out of range: y = [\(y)]")
+        assert(byte >= 0 && byte < bytesPerPixel, "Index out of range: byte = [\(byte)]")
     }
     
     private func offsetForPixelAtX(x: Int, y: Int) -> Int {

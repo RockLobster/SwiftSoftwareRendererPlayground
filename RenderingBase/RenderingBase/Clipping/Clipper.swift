@@ -31,6 +31,10 @@ public class Clipper {
             return
         }
         
+//        for vertexIndex in 0..<clippedPolygon.count {
+//            print("\(vertexIndex): \(clippedPolygon[vertexIndex].windowCoordinate)")
+//        }
+        
         for vertexIndex in 2..<clippedPolygon.count {
             perTriangleFunction(
                 [clippedPolygon[0],
@@ -81,8 +85,8 @@ public class Clipper {
     
     private func clipRight(polygon: [AttributedVector]) -> [AttributedVector] {
         return genericClip(polygon,
-            vertexIsInside: { return $0.windowCoordinate!.x < FloatType(self.width) },
-            intersect: {self.intersectAtX($0, vertex2: $1, x: FloatType(self.width))})
+            vertexIsInside: { return $0.windowCoordinate!.x <= FloatType(self.width-1) },
+            intersect: {self.intersectAtX($0, vertex2: $1, x: FloatType(self.width-1))})
     }
     
     private func clipBottom(polygon: [AttributedVector]) -> [AttributedVector] {
@@ -93,7 +97,7 @@ public class Clipper {
     
     private func clipTop(polygon: [AttributedVector]) -> [AttributedVector] {
         return genericClip(polygon,
-            vertexIsInside: { return $0.windowCoordinate!.y < FloatType(self.height) },
+            vertexIsInside: { return $0.windowCoordinate!.y <= FloatType(self.height-1) },
             intersect: {self.intersectAtY($0, vertex2: $1, y: FloatType(self.height-1))})
     }
 }

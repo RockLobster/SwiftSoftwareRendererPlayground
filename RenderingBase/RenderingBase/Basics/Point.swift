@@ -8,4 +8,8 @@ public struct Point{
         self.x = x
         self.y = y
     }
+    
+    public var debugDescription: String {
+        return "Point x: [\(x)] y: [\(y)]"
+    }
 }

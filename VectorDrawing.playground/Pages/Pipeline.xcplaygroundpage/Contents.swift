@@ -25,8 +25,8 @@ func loadColorCube() -> TriangleModel? {
     return ColorCube()
 }
 
-let model = loadModel()
-//let model = loadColorCube()
+//let model = loadModel()
+let model = loadColorCube()
 
 if let model = model {
     assert(model.faceIndices.count % 3 == 0)

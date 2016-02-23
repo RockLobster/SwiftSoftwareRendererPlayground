@@ -13,7 +13,13 @@ extension FloatType : LinearInterpolatable {
 
 extension UInt8 : LinearInterpolatable {
     public static func linearInterpolate(first: UInt8, second: UInt8, alpha: FloatType) -> UInt8 {
-        return UInt8( round( Float.linearInterpolate(FloatType(first), second: FloatType(second), alpha: alpha)))
+        if (alpha <= 0) {
+            return first
+        } else if (alpha >= 1) {
+            return second
+        } else {
+            return UInt8( round( Float.linearInterpolate(FloatType(first), second: FloatType(second), alpha: alpha)))
+        }
     }
 }
 

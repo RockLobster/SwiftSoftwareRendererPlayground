@@ -20,7 +20,13 @@ public struct BoundingBoxRange {
     }
 
     func alphaForValue(value: FloatType) -> FloatType {
-        let alpha = (value - min) / (max - min)
+        
+        let denominator = (max - min)
+        if (denominator == 0) {
+            return 1
+        }
+        
+        let alpha = (value - min) / denominator
         return alpha
     }
 }
