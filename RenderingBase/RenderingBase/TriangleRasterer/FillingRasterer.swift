@@ -3,12 +3,12 @@ import Foundation
 public class FillingRasterer : TriangleRasterer {
     
     let target: Bitmap
-    let lineDrawer: LineDrawer
     let fragmentShader: FragmentShader
+    let clipper: Clipper
     
     public required init(target: Bitmap, fragmentShader: FragmentShader) {
         self.target = target
-        self.lineDrawer = BresenhamLineDrawer(target: target)
+        self.clipper = Clipper(width: target.width, height: target.height)
         self.fragmentShader = fragmentShader
     }
     
@@ -35,9 +35,27 @@ public class FillingRasterer : TriangleRasterer {
     }
     
     public func rasterTriangle(var vertice1: AttributedVector, var vertice2: AttributedVector, var vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {
+        
         vertice1.windowCoordinate = pixelPointForLocation(vertice1.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         vertice2.windowCoordinate = pixelPointForLocation(vertice2.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         vertice3.windowCoordinate = pixelPointForLocation(vertice3.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        if (!locationsAreInNormalizedDeviceCoordinates) {
+            vertice1.location = target.normalizedDeviceCoordinate(vertice1.location)
+            vertice2.location = target.normalizedDeviceCoordinate(vertice2.location)
+            vertice3.location = target.normalizedDeviceCoordinate(vertice3.location)
+        }
+        
+        clipper.clipTriangle([vertice1, vertice2, vertice3]) {
+            (triangle: [AttributedVector]) in
+            
+            self.internal_rasterTriangle(
+                triangle[0],
+                vertice2: triangle[1],
+                vertice3: triangle[2])
+        }
+    }
+    
+    private func internal_rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector) {
         
         var verticeSet = [vertice1, vertice2, vertice3]
         

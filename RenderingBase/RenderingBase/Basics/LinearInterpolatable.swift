@@ -5,15 +5,6 @@ public protocol LinearInterpolatable {
     static func linearInterpolate (first: Self, second: Self, alpha: FloatType) -> Self
 }
 
-func alphaForValueInRange(value: FloatType, range: BoundingBoxRange) -> FloatType {
-    let rangeWidth = range.max - range.min
-    let relativeValue = value - range.min
-    let alpha = relativeValue / rangeWidth
-    
-    assert(alpha >= 0 && alpha <= 1)
-    return alpha
-}
-
 extension FloatType : LinearInterpolatable {
     public static func linearInterpolate (first: FloatType, second: FloatType, alpha: FloatType) -> FloatType {
         return (1 - alpha) * first + alpha * second

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8736541B1C7B62D4000E486B /* iOSExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736541A1C7B62D4000E486B /* iOSExtensions.swift */; };
 		8736541F1C7B6339000E486B /* OSXExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736541D1C7B631F000E486B /* OSXExtensions.swift */; };
+		875954601C7C82AF00EB8B97 /* Clipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759545F1C7C82AF00EB8B97 /* Clipper.swift */; };
+		875954611C7C82AF00EB8B97 /* Clipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759545F1C7C82AF00EB8B97 /* Clipper.swift */; };
 		87BDC2361C7B19590012A5B4 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */; };
 		87BDC2431C7B19600012A5B4 /* RenderingBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 872939181C7A2B7700BAF543 /* RenderingBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87BDC2441C7B19A00012A5B4 /* RenderingBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872939241C7A2B7700BAF543 /* RenderingBaseTests.swift */; };
@@ -103,6 +105,7 @@
 		873654191C7B6050000E486B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8736541A1C7B62D4000E486B /* iOSExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSExtensions.swift; sourceTree = "<group>"; };
 		8736541D1C7B631F000E486B /* OSXExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSXExtensions.swift; sourceTree = "<group>"; };
+		8759545F1C7C82AF00EB8B97 /* Clipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clipper.swift; sourceTree = "<group>"; };
 		87BDC22C1C7B19590012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BDC2351C7B19590012A5B4 /* RenderingBaseIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenderingBaseIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BDC25F1C7B1B6B0012A5B4 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RenderingBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +178,7 @@
 				8729393E1C7A2DC400BAF543 /* Models */,
 				872939421C7A2DC400BAF543 /* Shaders */,
 				872939451C7A2DC400BAF543 /* TriangleRasterer */,
+				8759545E1C7C82A000EB8B97 /* Clipping */,
 				8736541C1C7B62E8000E486B /* Support */,
 			);
 			path = RenderingBase;
@@ -258,6 +262,14 @@
 				8736541D1C7B631F000E486B /* OSXExtensions.swift */,
 			);
 			name = Support;
+			sourceTree = "<group>";
+		};
+		8759545E1C7C82A000EB8B97 /* Clipping */ = {
+			isa = PBXGroup;
+			children = (
+				8759545F1C7C82AF00EB8B97 /* Clipper.swift */,
+			);
+			path = Clipping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +465,7 @@
 				87BDC2511C7B19D60012A5B4 /* BoundingBox.swift in Sources */,
 				87BDC2551C7B19E40012A5B4 /* PointCloudRasterer.swift in Sources */,
 				87BDC2541C7B19E40012A5B4 /* FillingRasterer.swift in Sources */,
+				875954601C7C82AF00EB8B97 /* Clipper.swift in Sources */,
 				87BDC2521C7B19DC0012A5B4 /* ColorCube.swift in Sources */,
 				87BDC2581C7B19E90012A5B4 /* FragmentShader.swift in Sources */,
 				87BDC24D1C7B19C70012A5B4 /* ObjLoader.swift in Sources */,
@@ -490,6 +503,7 @@
 				87BDC2871C7B1BCC0012A5B4 /* PointCloudRasterer.swift in Sources */,
 				87BDC2861C7B1BCC0012A5B4 /* FillingRasterer.swift in Sources */,
 				8736541F1C7B6339000E486B /* OSXExtensions.swift in Sources */,
+				875954611C7C82AF00EB8B97 /* Clipper.swift in Sources */,
 				87BDC2841C7B1BC70012A5B4 /* ColorCube.swift in Sources */,
 				87BDC28A1C7B1BD00012A5B4 /* FragmentShader.swift in Sources */,
 				87BDC27F1C7B1BBC0012A5B4 /* ObjLoader.swift in Sources */,

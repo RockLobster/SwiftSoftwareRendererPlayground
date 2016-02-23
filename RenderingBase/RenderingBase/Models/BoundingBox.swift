@@ -18,6 +18,11 @@ public struct BoundingBoxRange {
         self.min = min;
         self.max = max;
     }
+
+    func alphaForValue(value: FloatType) -> FloatType {
+        let alpha = (value - min) / (max - min)
+        return alpha
+    }
 }
 
 public struct BoundingBox {

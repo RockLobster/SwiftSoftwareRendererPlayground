@@ -49,10 +49,10 @@ public class Bitmap {
         return CGBitmapContextCreateImage(context)
     }
     
-    private func indexIsValidForX(x: Int, y: Int, byte: Int) -> Bool {
-        return x >= 0 && x < width
-            && y >= 0 && y < height
-            && byte >= 0 && byte < bytesPerPixel
+    private func validateIndexWithX(x: Int, y: Int, byte: Int) {
+//        assert(x >= 0 && x < width, "Index out of range: x = [\(x)]")
+//        assert(y >= 0 && y < height, "Index out of range: y = [\(y)]")
+//        assert(byte >= 0 && byte < bytesPerPixel, "Index out of range: byte = [\(byte)]")
     }
     
     private func offsetForPixelAtX(x: Int, y: Int) -> Int {
@@ -63,32 +63,29 @@ public class Bitmap {
     public subscript(x: Int, y: Int, byte: Int) -> UInt8 {
         
         get {
-            if (indexIsValidForX(x, y: y, byte: byte)) {
-                let dataPointer = UnsafeMutablePointer<UInt8>(data)
-                return dataPointer[offsetForPixelAtX(x, y: y) + byte]
-            }
-            else {
-                assert(false, "Index out of range")
-                return 0
-            }
+            validateIndexWithX(x, y: y, byte: byte)
+            let dataPointer = UnsafeMutablePointer<UInt8>(data)
+            return dataPointer[offsetForPixelAtX(x, y: y) + byte]
         }
         set {
-            if (indexIsValidForX(x, y: y, byte: byte)) {
-                let dataPointer = UnsafeMutablePointer<UInt8>(data)
-                dataPointer[offsetForPixelAtX(x, y: y) + byte] = newValue
-            }
-            else {
-                assert(false, "Index out of range")
-            }
+            validateIndexWithX(x, y: y, byte: byte)
+            let dataPointer = UnsafeMutablePointer<UInt8>(data)
+            dataPointer[offsetForPixelAtX(x, y: y) + byte] = newValue
         }
     }
 }
 
 extension Bitmap {
     public func pixelCoordinatesForEyeSpaceVector(vector: Vector3D) -> Point {
-        let x = round((vector.x + 1.0) / 2 * FloatType(width))
-        let y = round((vector.y + 1.0) / 2 * FloatType(height))
+        let x = round((vector.x + 1.0) / 2 * FloatType(width-1))
+        let y = round((vector.y + 1.0) / 2 * FloatType(height-1))
         return Point(x, y)
+    }
+    
+    public func normalizedDeviceCoordinate(vector: Vector3D) -> Vector3D {
+        let x = (vector.x * 2.0 / FloatType(width)) - 1.0
+        let y = (vector.y * 2.0 / FloatType(height)) - 1.0
+        return Vector3D(x, y, vector.z)
     }
 }
 

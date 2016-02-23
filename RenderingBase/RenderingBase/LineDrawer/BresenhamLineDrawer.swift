@@ -9,6 +9,10 @@ public class BresenhamLineDrawer: LineDrawer {
     }
     
     func drawToPixel(x: Int, y:Int, drawColor: Color) {
+        if (x < 0 || x >= self.target.width || y < 0 || y >= self.target.height) {
+            return
+        }
+        
         target[x, y, 0] = drawColor.red
         target[x, y, 1] = drawColor.green
         target[x, y, 2] = drawColor.blue
