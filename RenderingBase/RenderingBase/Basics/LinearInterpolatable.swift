@@ -7,7 +7,7 @@ public protocol LinearInterpolatable {
 
 extension FloatType : LinearInterpolatable {
     public static func linearInterpolate (first: FloatType, second: FloatType, alpha: FloatType) -> FloatType {
-        return (1 - alpha) * first + alpha * second
+        return (1.0 - alpha) * first + alpha * second
     }
 }
 
