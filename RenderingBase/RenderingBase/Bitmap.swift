@@ -49,10 +49,19 @@ public class Bitmap {
         return CGBitmapContextCreateImage(context)
     }
     
-    private func validateIndexWithX(x: Int, y: Int, byte: Int) {
-        assert(x >= 0 && x < width, "Index out of range: x = [\(x)]")
-        assert(y >= 0 && y < height, "Index out of range: y = [\(y)]")
-        assert(byte >= 0 && byte < bytesPerPixel, "Index out of range: byte = [\(byte)]")
+    private func isValidIndexWithX(x: Int, y: Int, byte: Int) -> Bool {
+        if (x < 0 || x >= width) {
+            print("Index out of range: x = [\(x)]")
+            return false
+        } else if (y < 0 || y >= height) {
+            print("Index out of range: y = [\(y)]")
+            return false
+        } else if (byte < 0 || byte >= bytesPerPixel) {
+            print("Index out of range: byte = [\(byte)]")
+            return false
+        } else {
+            return true
+        }
     }
     
     private func offsetForPixelAtX(x: Int, y: Int) -> Int {
@@ -63,12 +72,12 @@ public class Bitmap {
     public subscript(x: Int, y: Int, byte: Int) -> UInt8 {
         
         get {
-            validateIndexWithX(x, y: y, byte: byte)
+            assert(isValidIndexWithX(x, y: y, byte: byte))
             let dataPointer = UnsafeMutablePointer<UInt8>(data)
             return dataPointer[offsetForPixelAtX(x, y: y) + byte]
         }
         set {
-            validateIndexWithX(x, y: y, byte: byte)
+            assert(isValidIndexWithX(x, y: y, byte: byte))
             let dataPointer = UnsafeMutablePointer<UInt8>(data)
             dataPointer[offsetForPixelAtX(x, y: y) + byte] = newValue
         }
