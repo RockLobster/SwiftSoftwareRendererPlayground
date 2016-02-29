@@ -23,7 +23,7 @@ public struct BoundingBoxRange {
         
         let denominator = (max - min)
         if (denominator == 0) {
-            return 1
+            return 0
         }
         
         let alpha = (value - min) / denominator
