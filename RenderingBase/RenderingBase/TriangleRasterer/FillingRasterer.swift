@@ -8,7 +8,7 @@ public final class FillingRasterer : TriangleRasterer {
     
     public required init(target: Bitmap, fragmentShader: FragmentShader) {
         self.target = target
-        self.clipper = Clipper(width: target.width, height: target.height)
+        self.clipper = Clipper()
         self.fragmentShader = fragmentShader
     }
     
@@ -31,21 +31,15 @@ public final class FillingRasterer : TriangleRasterer {
         }
     }
     
-    private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
-        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForNormalizedDeviceCoordinate(location) : Point(location.x, location.y)
-    }
-    
     public func rasterTriangle(var vertice1: AttributedVector, var vertice2: AttributedVector, var vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {
         
-        vertice1.windowCoordinate = pixelPointForLocation(vertice1.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
-        vertice2.windowCoordinate = pixelPointForLocation(vertice2.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
-        vertice3.windowCoordinate = pixelPointForLocation(vertice3.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        vertice1.normalizedDeviceCoordinate = locationsAreInNormalizedDeviceCoordinates ? vertice1.location : target.normalizedDeviceCoordinate(vertice1.location)
+        vertice2.normalizedDeviceCoordinate = locationsAreInNormalizedDeviceCoordinates ? vertice2.location : target.normalizedDeviceCoordinate(vertice2.location)
+        vertice3.normalizedDeviceCoordinate = locationsAreInNormalizedDeviceCoordinates ? vertice3.location : target.normalizedDeviceCoordinate(vertice3.location)
         
-        if (!locationsAreInNormalizedDeviceCoordinates) {
-            vertice1.location = target.normalizedDeviceCoordinate(vertice1.location)
-            vertice2.location = target.normalizedDeviceCoordinate(vertice2.location)
-            vertice3.location = target.normalizedDeviceCoordinate(vertice3.location)
-        }
+        vertice1.windowCoordinate = target.pixelCoordinatesForNormalizedDeviceCoordinate(vertice1.normalizedDeviceCoordinate!)
+        vertice2.windowCoordinate = target.pixelCoordinatesForNormalizedDeviceCoordinate(vertice2.normalizedDeviceCoordinate!)
+        vertice3.windowCoordinate = target.pixelCoordinatesForNormalizedDeviceCoordinate(vertice3.normalizedDeviceCoordinate!)
         
         clipper.clipTriangle([vertice1, vertice2, vertice3]) {
             (triangle: [AttributedVector]) in

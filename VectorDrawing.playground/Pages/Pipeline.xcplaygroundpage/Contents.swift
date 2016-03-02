@@ -3,10 +3,7 @@
 import AppKit
 import RenderingBase
 
-func loadModel() -> TriangleModel? {
-    
-    let name = "BB8/bb8"
-//    let name = "house interior"
+private func loadFileWithName(name: String) -> TriangleModel? {
     
     guard let modelPath = NSBundle.mainBundle().pathForResource(name, ofType: "obj") else {
         print("Can't find model file")
@@ -21,11 +18,15 @@ func loadModel() -> TriangleModel? {
     return ObjLoader().readModelFromFile(streamReader)
 }
 
+func loadBB8() -> TriangleModel? {
+    return loadFileWithName("BB8/bb8")
+}
+
 func loadColorCube() -> TriangleModel? {
     return ColorCube()
 }
 
-let model = loadModel()
+let model = loadBB8()
 //let model = loadColorCube()
 
 if let model = model {
@@ -48,8 +49,6 @@ if let model = model {
     imageView.image = renderUsingRasterer( PointCloudRasterer(target: bitmap, pointColor: Color.White()), cullBackfaces: false)
     
     imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()), cullBackfaces: false)
-    
-    //imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: DefaultColorShader), cullBackfaces: true)
     
     imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth * 1.0)), cullBackfaces: false)
     

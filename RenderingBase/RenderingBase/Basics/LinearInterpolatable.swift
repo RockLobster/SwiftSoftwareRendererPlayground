@@ -77,7 +77,8 @@ extension AttributedVector : LinearInterpolatable {
             Vector3D.linearInterpolate(first.location, second: second.location, alpha: alpha),
             Color.linearInterpolate(first.color, second: second.color, alpha: alpha),
             Vector3D.linearInterpolate(first.normal, second: second.normal, alpha: alpha),
-            Point.linearInterpolate(first.windowCoordinate, second: second.windowCoordinate, alpha: alpha)
+            Point.linearInterpolate(first.windowCoordinate, second: second.windowCoordinate, alpha: alpha),
+            Vector3D.linearInterpolate(first.normalizedDeviceCoordinate, second: second.normalizedDeviceCoordinate, alpha: alpha)
         )
     }
 }
