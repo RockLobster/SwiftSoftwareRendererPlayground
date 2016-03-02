@@ -13,7 +13,7 @@ public class WireframeRasterer : TriangleRasterer {
     }
     
     private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
-        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForEyeSpaceVector(location) : Point(location.x, location.y)
+        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForNormalizedDeviceCoordinate(location) : Point(location.x, location.y)
     }
     
     public func rasterTriangle(vertice1: AttributedVector, vertice2: AttributedVector, vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {

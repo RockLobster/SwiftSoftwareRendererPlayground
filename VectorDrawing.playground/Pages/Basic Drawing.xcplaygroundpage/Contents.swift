@@ -1,12 +1,10 @@
 //: Playground - noun: a place where people can play
 
-import UIKit
+import AppKit
 import RenderingBase
 
-let imageView = UIImageView(frame: CGRectMake(0, 0, 400, 400))
-imageView.contentMode = UIViewContentMode.ScaleAspectFit
-imageView.layer.magnificationFilter = kCAFilterNearest
-imageView.layer.minificationFilter  = kCAFilterNearest
+let imageView = NSImageView(frame: CGRectMake(0, 0, 400, 400))
+imageView.imageScaling = NSImageScaling.ScaleAxesIndependently
 
 let bitmap = Bitmap(width: 100, height: 100)
 
@@ -18,7 +16,7 @@ lineDrawer.drawLine(Point(0, 0),  end: Point(Float(bitmap.width-1), Float(bitmap
 lineDrawer.drawLine(Point(50,60), end: Point(50,60), color: Color.Green())
 lineDrawer.drawLine(Point(0, 0),  end: Point(99, 99), color: Color.Blue())
 lineDrawer.drawLine(Point(0, 99), end: Point(99, 70), color: Color.Red())
-imageView.image = bitmap.createUIImage()
+imageView.image = bitmap.createNSImage()
 
 //Triangle 1
 let triangle1 = [
@@ -60,7 +58,7 @@ render(triangle1, rasterer: triangleRasterer)
 render(triangle2, rasterer: triangleRasterer)
 render(triangle3, rasterer: triangleRasterer)
 //render(triangle4, rasterer: triangleRasterer)
-imageView.image = bitmap.createUIImage()
+imageView.image = bitmap.createNSImage()
 
 triangleRasterer = FillingRasterer(target: bitmap, fragmentShader: DefaultColorShader)
 
@@ -69,4 +67,4 @@ render(triangle1, rasterer: triangleRasterer)
 render(triangle2, rasterer: triangleRasterer)
 render(triangle3, rasterer: triangleRasterer)
 //render(triangle4, rasterer: triangleRasterer)
-imageView.image = bitmap.createUIImage()
+imageView.image = bitmap.createNSImage()

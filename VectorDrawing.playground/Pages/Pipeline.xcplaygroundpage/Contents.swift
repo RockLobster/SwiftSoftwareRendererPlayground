@@ -1,6 +1,6 @@
 //: [Previous](@previous)
 
-import UIKit
+import AppKit
 import RenderingBase
 
 func loadModel() -> TriangleModel? {
@@ -25,26 +25,24 @@ func loadColorCube() -> TriangleModel? {
     return ColorCube()
 }
 
-//let model = loadModel()
-let model = loadColorCube()
+let model = loadModel()
+//let model = loadColorCube()
 
 if let model = model {
     assert(model.faceIndices.count % 3 == 0)
     
-    let imageView = UIImageView(frame: CGRectMake(0, 0, 400, 400))
-    imageView.contentMode = UIViewContentMode.ScaleAspectFit
-    imageView.layer.magnificationFilter = kCAFilterNearest
-    imageView.layer.minificationFilter  = kCAFilterNearest
+    let imageView = NSImageView(frame: CGRectMake(0, 0, 400, 400))
+    imageView.imageScaling = NSImageScaling.ScaleAxesIndependently
     
-    let bitmap = Bitmap(width: 50, height: 50)
+    let bitmap = Bitmap(width: 400, height: 400)
     let boundingBox = model.boundingBox!
-    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.0)
+    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.01)
     let vertexShader = SimpleProjectionShader(projectionMatrix)
     
-    func renderUsingRasterer(rasterer: TriangleRasterer, cullBackfaces: Bool) -> UIImage? {
+    func renderUsingRasterer(rasterer: TriangleRasterer, cullBackfaces: Bool) -> NSImage? {
         bitmap.clearWithBlack()
         model.renderUsingVertexShader(vertexShader, rasterer: rasterer, cullBackFaces: cullBackfaces)
-        return bitmap.createUIImage()
+        return bitmap.createNSImage()
     }
     
     imageView.image = renderUsingRasterer( PointCloudRasterer(target: bitmap, pointColor: Color.White()), cullBackfaces: false)
@@ -53,9 +51,9 @@ if let model = model {
     
     //imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: DefaultColorShader), cullBackfaces: true)
     
-    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: false)
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth * 1.0)), cullBackfaces: false)
     
-    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth)), cullBackfaces: true)
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth * 1.0)), cullBackfaces: true)
 }
 
 //: [Next](@next)

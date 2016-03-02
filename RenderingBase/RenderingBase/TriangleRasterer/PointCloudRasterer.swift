@@ -17,7 +17,7 @@ public class PointCloudRasterer : TriangleRasterer {
     }
     
     private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
-        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForEyeSpaceVector(location) : Point(location.x, location.y)
+        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForNormalizedDeviceCoordinate(location) : Point(location.x, location.y)
     }
     
     private func drawPoint(point: Point) {

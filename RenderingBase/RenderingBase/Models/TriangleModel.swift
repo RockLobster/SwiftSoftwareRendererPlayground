@@ -29,17 +29,27 @@ public class TriangleModel {
     
     public var boundingBox: BoundingBox? {
         
-        let minX = self.geometricVertices.reduce(Float.infinity, combine:{return min($0, $1.x)})
-        let maxX = self.geometricVertices.reduce(-Float.infinity, combine:{return max($0, $1.x)})
-        let minY = self.geometricVertices.reduce(Float.infinity, combine:{return min($0, $1.y)})
-        let maxY = self.geometricVertices.reduce(-Float.infinity, combine:{return max($0, $1.y)})
-        let minZ = self.geometricVertices.reduce(Float.infinity, combine:{return min($0, $1.z)})
-        let maxZ = self.geometricVertices.reduce(-Float.infinity, combine:{return max($0, $1.z)})
+        if geometricVertices.isEmpty {
+            return nil
+        }
+        
+        let minX = self.geometricVertices.minElement {$0.x < $1.x}?.x
+        let maxX = self.geometricVertices.maxElement {$0.x < $1.x}?.x
+        
+        let minY = self.geometricVertices.minElement {$0.y < $1.y}?.y
+        let maxY = self.geometricVertices.maxElement {$0.y < $1.y}?.y
+        
+        let minZ = self.geometricVertices.minElement {$0.z < $1.z}?.z
+        let maxZ = self.geometricVertices.maxElement {$0.z < $1.z}?.z
+        
+        let xRange = BoundingBoxRange(min: minX!, max: maxX!)!
+        let yRange = BoundingBoxRange(min: minY!, max: maxY!)!
+        let zRange = BoundingBoxRange(min: minZ!, max: maxZ!)!
         
         return BoundingBox(
-            xRange: BoundingBoxRange(min: minX, max: maxX),
-            yRange: BoundingBoxRange(min: minY, max: maxY),
-            zRange: BoundingBoxRange(min: minZ, max: maxZ)
+            xRange: xRange,
+            yRange: yRange,
+            zRange: zRange
         )
     }
 }

@@ -4,12 +4,15 @@ public final class ObjLoader {
     
     public init () {}
     
+    private var lineCount = 0
+    
     public func readModelFromFile(lineSource: StreamReader) -> TriangleModel? {
     
         let model = TriangleModel()
         
         for line in lineSource {
             handleLine(line, model: model)
+            lineCount++
         }
         
         return model
@@ -21,6 +24,7 @@ public final class ObjLoader {
             return
         }
         
+        //print("line \(lineCount): \(line)")
         //print("Found a line with prefix [\(splitLine.prefix)] and value [\(splitLine.restLine)]")
         
         switch splitLine.prefix {
@@ -66,14 +70,16 @@ public final class ObjLoader {
     }
     
     func extractVectorFrom(line: String) -> Vector3D? {
-        let scalarStrings = line.characters.split(" ").map(String.init).filter {return $0 != " "}
+        let splitCharacters = line.characters.split(" ")
+        let stringyfied = splitCharacters.map(String.init)
+        let scalarStrings = stringyfied.filter {return $0 != " "}
         
         assert(scalarStrings.count == 3) //currently the only handled case
         
-        let numberFormatter = NSNumberFormatter()
-        guard let x = numberFormatter.numberFromString(scalarStrings[0])?.floatValue,
-            y = numberFormatter.numberFromString(scalarStrings[1])?.floatValue,
-            z = numberFormatter.numberFromString(scalarStrings[2])?.floatValue else {
+        guard let x = FloatType(scalarStrings[0]),
+            y = FloatType(scalarStrings[1]),
+            z = FloatType(scalarStrings[2]) else {
+                print("Can't extract vector from line: \(line) with split characters: \(stringyfied)")
                 return nil
         }
         

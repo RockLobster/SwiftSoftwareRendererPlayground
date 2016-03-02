@@ -1,6 +1,6 @@
 import Foundation
 
-public class FillingRasterer : TriangleRasterer {
+public final class FillingRasterer : TriangleRasterer {
     
     let target: Bitmap
     let fragmentShader: FragmentShader
@@ -23,6 +23,7 @@ public class FillingRasterer : TriangleRasterer {
     }
     
     private func drawVec(vector: AttributedVector, shader: FragmentShader) {
+        
         let optionalFragmentColor = shader(vector)
         
         if let fragmentColor = optionalFragmentColor {
@@ -31,7 +32,7 @@ public class FillingRasterer : TriangleRasterer {
     }
     
     private func pixelPointForLocation(location: Vector3D, locationsAreInNormalizedDeviceCoordinates: Bool) -> Point {
-        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForEyeSpaceVector(location) : Point(location.x, location.y)
+        return locationsAreInNormalizedDeviceCoordinates ? target.pixelCoordinatesForNormalizedDeviceCoordinate(location) : Point(location.x, location.y)
     }
     
     public func rasterTriangle(var vertice1: AttributedVector, var vertice2: AttributedVector, var vertice3: AttributedVector, locationsAreInNormalizedDeviceCoordinates: Bool) {
@@ -39,6 +40,7 @@ public class FillingRasterer : TriangleRasterer {
         vertice1.windowCoordinate = pixelPointForLocation(vertice1.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         vertice2.windowCoordinate = pixelPointForLocation(vertice2.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
         vertice3.windowCoordinate = pixelPointForLocation(vertice3.location, locationsAreInNormalizedDeviceCoordinates: locationsAreInNormalizedDeviceCoordinates)
+        
         if (!locationsAreInNormalizedDeviceCoordinates) {
             vertice1.location = target.normalizedDeviceCoordinate(vertice1.location)
             vertice2.location = target.normalizedDeviceCoordinate(vertice2.location)
@@ -60,10 +62,6 @@ public class FillingRasterer : TriangleRasterer {
         var verticeSet = [vertice1, vertice2, vertice3]
         
         verticeSet.sortInPlace { return $0.windowCoordinate!.y < $1.windowCoordinate!.y }
-        
-        drawVec(verticeSet[0], shader: self.fragmentShader)
-        drawVec(verticeSet[1], shader: self.fragmentShader)
-        drawVec(verticeSet[2], shader: self.fragmentShader)
         
         let yRangeBegin = Int(round(verticeSet[0].windowCoordinate!.y))
         let yRangeMid   = Int(round(verticeSet[1].windowCoordinate!.y))

@@ -1,7 +1,7 @@
 import Foundation
 import CoreGraphics
 
-public class Bitmap {
+public final class Bitmap {
     public let width: Int
     public let height: Int
     let data: UnsafeMutablePointer<Void>
@@ -23,7 +23,6 @@ public class Bitmap {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
         data = malloc(totalBitmapBytes)
-        
         
         context = CGBitmapContextCreate(data, Int(width), Int(height), bitsPerComponent, bytesPerRow, colorSpace, CGImageAlphaInfo.NoneSkipLast.rawValue)!
     }
@@ -65,7 +64,7 @@ public class Bitmap {
     }
     
     private func offsetForPixelAtX(x: Int, y: Int) -> Int {
-        let pixelIndex  = (y * width) + x
+        let pixelIndex  = ((height - 1 - y) * width) + x
         return pixelIndex * bytesPerPixel
     }
     
@@ -85,7 +84,7 @@ public class Bitmap {
 }
 
 extension Bitmap {
-    public func pixelCoordinatesForEyeSpaceVector(vector: Vector3D) -> Point {
+    public func pixelCoordinatesForNormalizedDeviceCoordinate(vector: Vector3D) -> Point {
         let x = round((vector.x + 1.0) / 2 * FloatType(width-1))
         let y = round((vector.y + 1.0) / 2 * FloatType(height-1))
         return Point(x, y)

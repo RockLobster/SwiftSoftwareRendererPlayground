@@ -1,13 +1,11 @@
 //: [Previous](@previous)
 
 import Foundation
-import UIKit
+import AppKit
 import RenderingBase
 
-let imageView = UIImageView(frame: CGRectMake(0, 0, 400, 400))
-imageView.contentMode = UIViewContentMode.ScaleAspectFit
-imageView.layer.magnificationFilter = kCAFilterNearest
-imageView.layer.minificationFilter  = kCAFilterNearest
+let imageView = NSImageView(frame: CGRectMake(0, 0, 400, 400))
+imageView.imageScaling = NSImageScaling.ScaleAxesIndependently
 
 let bitmap = Bitmap(width: 100, height: 100)
 
@@ -45,7 +43,7 @@ render(triangleOutsideLeft, locationsAreInNormalizedDeviceCoordinates: false)
 render(triangleOutsideRight, locationsAreInNormalizedDeviceCoordinates: false)
 render(triangleOutsideBottom, locationsAreInNormalizedDeviceCoordinates: false)
 render(triangleOutsideTop, locationsAreInNormalizedDeviceCoordinates: false)
-imageView.image = bitmap.createUIImage()
+imageView.image = bitmap.createNSImage()
 
 
 let trianglePartiallyOutsideLeft = [
@@ -77,6 +75,6 @@ render(trianglePartiallyOutsideLeft, locationsAreInNormalizedDeviceCoordinates: 
 render(trianglePartiallyOutsideRight, locationsAreInNormalizedDeviceCoordinates: true)
 render(trianglePartiallyOutsideBottom, locationsAreInNormalizedDeviceCoordinates: true)
 render(trianglePartiallyOutsideTop, locationsAreInNormalizedDeviceCoordinates: true)
-imageView.image = bitmap.createUIImage()
+imageView.image = bitmap.createNSImage()
 
 //: [Next](@next)

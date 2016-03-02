@@ -45,11 +45,7 @@ public struct BoundingBox {
         return zRange.length
     }
     
-    init?(xRange: BoundingBoxRange?, yRange: BoundingBoxRange?, zRange: BoundingBoxRange?) {
-        guard let xRange = xRange, let yRange = yRange, let zRange = zRange else {
-            return nil
-        }
-        
+    init?(xRange: BoundingBoxRange, yRange: BoundingBoxRange, zRange: BoundingBoxRange) {
         self.xRange = xRange
         self.yRange = yRange
         self.zRange = zRange
