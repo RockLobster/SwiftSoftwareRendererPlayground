@@ -22,3 +22,17 @@ public func LocationBasedFragmentShader(zDepth: FloatType = 1.0) -> FragmentShad
         return Color(red: UInt8(red), green: UInt8(green), blue: UInt8(blue) )
     }
 }
+
+public func SimplePhongShaderForLightPosition(lightDirection: Vector3D) -> FragmentShader {
+    
+    let ambientColor = Color(red: 100, green: 100, blue: 255)
+    let diffuseColor = Color(red: 255, green: 255, blue: 255)
+    let ambientAlpha: FloatType = 0.1
+    let diffuseAlpha: FloatType = 1.0-ambientAlpha
+    
+    return {
+        let diffuseFactor: FloatType = max(0.0, $0.normal!.dotProductWith(lightDirection));
+        
+        return (ambientColor * ambientAlpha) + diffuseColor * (diffuseAlpha * diffuseFactor)
+    }
+}

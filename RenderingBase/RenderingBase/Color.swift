@@ -32,3 +32,21 @@ public struct Color {
         return Color(red: 255, green: 255, blue: 255)
     }
 }
+
+public func * (first: Color, second: FloatType) -> Color {
+    
+    let red   = UInt8( min(255.0, max(0.0, FloatType(first.red) * second)) )
+    let green = UInt8( min(255.0, max(0.0, FloatType(first.green) * second)) )
+    let blue  = UInt8( min(255.0, max(0.0, FloatType(first.blue) * second)) )
+    
+    return Color(red: red, green: green, blue: blue)
+}
+
+public func + (first: Color, second: Color) -> Color {
+    
+    let red   = UInt8( min(255, max(0, UInt16(first.red)   + UInt16(second.red))))
+    let green = UInt8( min(255, max(0, UInt16(first.green) + UInt16(second.green))))
+    let blue  = UInt8( min(255, max(0, UInt16(first.blue)  + UInt16(second.blue))))
+    
+    return Color(red: red, green: green, blue: blue)
+}

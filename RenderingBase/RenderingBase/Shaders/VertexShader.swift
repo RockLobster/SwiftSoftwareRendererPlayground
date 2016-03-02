@@ -8,7 +8,8 @@ public func SimpleProjectionShader(projectionMatrix: Matrix4x4) -> VertexShader 
             projectionMatrix * vertex.location,
             vertex.color,
             vertex.normal,
-            vertex.windowCoordinate
+            vertex.windowCoordinate,
+            vertex.normalizedDeviceCoordinate
         )
     }
 }

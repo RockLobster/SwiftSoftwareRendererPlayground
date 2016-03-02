@@ -4,11 +4,12 @@ import CoreGraphics
 public final class Bitmap {
     public let width: Int
     public let height: Int
-    let data: UnsafeMutablePointer<Void>
-    let context: CGContext
-    let bytesPerRow: Int
-    let bytesPerPixel: Int
-    let bitsPerComponent = 8
+    public let bytesPerPixel: Int
+    public let bitsPerComponent = 8
+    
+    private let data: UnsafeMutablePointer<Void>
+    private let context: CGContext
+    private let bytesPerRow: Int
     
     public init(width: Int, height: Int) {
         self.width  = width
