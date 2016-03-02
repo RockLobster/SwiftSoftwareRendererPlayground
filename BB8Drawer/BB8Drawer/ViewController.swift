@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     @IBOutlet private var imageView: NSImageView?
     @IBOutlet private var loadingLabel: NSTextField?
     
-    private let bitmap = Bitmap(width: 400, height: 400)
+    private let bitmap = Bitmap(width: 600, height: 600)
     private var model: TriangleModel?
     private let degreesPerSecond: FloatType = 20.0
     private var vertexShader: VertexShader?
