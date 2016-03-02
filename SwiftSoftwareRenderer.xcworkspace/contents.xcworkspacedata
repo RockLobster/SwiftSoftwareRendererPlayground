@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:BB8Drawer/BB8Drawer.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:RenderingBase/../VectorDrawing.playground">
    </FileRef>
    <FileRef
