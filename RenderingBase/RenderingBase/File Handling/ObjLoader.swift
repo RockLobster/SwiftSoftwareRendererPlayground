@@ -74,14 +74,15 @@ public final class ObjLoader {
         let stringyfied = splitCharacters.map(String.init)
         let scalarStrings = stringyfied.filter {return $0 != " "}
         
-        assert(scalarStrings.count == 3) //currently the only handled case
+        assert(scalarStrings.count == 3 || scalarStrings.count == 2) //currently the only handled case
         
         guard let x = FloatType(scalarStrings[0]),
-            y = FloatType(scalarStrings[1]),
-            z = FloatType(scalarStrings[2]) else {
+            y = FloatType(scalarStrings[1]) else {
                 print("Can't extract vector from line: \(line) with split characters: \(stringyfied)")
                 return nil
         }
+        
+        let z = (scalarStrings.count == 3) ? FloatType(scalarStrings[2])! : 0.0
         
         return Vector3D(x, y, z)
     }
