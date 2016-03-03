@@ -44,6 +44,9 @@ public struct BoundingBox {
     public var depth: FloatType {
         return zRange.length
     }
+    public var center: Vector3D {
+        return Vector3D(xRange.center, yRange.center, zRange.center)
+    }
     
     init?(xRange: BoundingBoxRange, yRange: BoundingBoxRange, zRange: BoundingBoxRange) {
         self.xRange = xRange
