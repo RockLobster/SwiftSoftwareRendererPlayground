@@ -77,9 +77,12 @@ public final class Bitmap {
             return dataPointer[offsetForPixelAtX(x, y: y) + byte]
         }
         set {
-            assert(isValidIndexWithX(x, y: y, byte: byte))
-            let dataPointer = UnsafeMutablePointer<UInt8>(data)
-            dataPointer[offsetForPixelAtX(x, y: y) + byte] = newValue
+            if isValidIndexWithX(x, y: y, byte: byte) {
+                let dataPointer = UnsafeMutablePointer<UInt8>(data)
+                dataPointer[offsetForPixelAtX(x, y: y) + byte] = newValue
+            } else {
+                print("trying to write to illegal coordinate x: [\(x)] y: [\(y)] byte: [\(byte)]")
+            }
         }
     }
 }
