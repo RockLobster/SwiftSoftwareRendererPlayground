@@ -28,6 +28,10 @@ public final class Bitmap {
         context = CGBitmapContextCreate(data, Int(width), Int(height), bitsPerComponent, bytesPerRow, colorSpace, CGImageAlphaInfo.NoneSkipLast.rawValue)!
     }
     
+    deinit {
+        free(data)
+    }
+    
     public func clearWithColorUsingRed(red: UInt8, green: UInt8, blue: UInt8) {
         let pixelCount = width * height
         let dataPointer = UnsafeMutablePointer<UInt8>(data)
