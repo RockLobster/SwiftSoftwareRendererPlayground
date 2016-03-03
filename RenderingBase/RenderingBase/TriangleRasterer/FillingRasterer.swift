@@ -18,16 +18,15 @@ public final class FillingRasterer : TriangleRasterer {
         target[x, y, 2] = drawColor.blue
     }
     
-    private func drawToPixel(x: Float, y: Float, drawColor: Color) {
-        self.drawToPixel(Int(round(x)), y: Int(round(y)), drawColor: drawColor);
-    }
-    
     private func drawVec(vector: AttributedVector, shader: FragmentShader) {
         
         let optionalFragmentColor = shader(vector)
         
         if let fragmentColor = optionalFragmentColor {
-            drawToPixel(vector.windowCoordinate!.x, y: vector.windowCoordinate!.y, drawColor: fragmentColor)
+            let x = Int(round(vector.windowCoordinate!.x))
+            let y = Int(round(vector.windowCoordinate!.y))
+            
+            drawToPixel(x, y: y, drawColor: fragmentColor)
         }
     }
     
@@ -99,6 +98,7 @@ public final class FillingRasterer : TriangleRasterer {
         for x in xRangeBegin...xRangeEnd {
             let alpha = BoundingBoxRange(min: start.windowCoordinate!.x, max: end.windowCoordinate!.x)!.alphaForValue(FloatType(x))
             let vectorAtX = AttributedVector.linearInterpolate(start, second: end, alpha: alpha)
+            
             drawVec(vectorAtX, shader: self.fragmentShader)
         }
     }
