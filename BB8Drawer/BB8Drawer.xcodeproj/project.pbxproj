@@ -11,7 +11,6 @@
 		87B58C161C878ADB00DA8362 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B58C151C878ADB00DA8362 /* ViewController.swift */; };
 		87B58C181C878ADB00DA8362 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C171C878ADB00DA8362 /* Assets.xcassets */; };
 		87B58C1B1C878ADB00DA8362 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C191C878ADB00DA8362 /* Main.storyboard */; };
-		87B58C2A1C87969100DA8362 /* deadpool.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C291C87969100DA8362 /* deadpool.obj */; };
 		87B58C2D1C87A0EC00DA8362 /* bb8.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C241C8790D000DA8362 /* bb8.obj */; };
 		87B58C351C87A5CA00DA8362 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B58C311C87A5B200DA8362 /* RenderingBase.framework */; };
 		87B58C361C87A5CA00DA8362 /* RenderingBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87B58C311C87A5B200DA8362 /* RenderingBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,7 +38,6 @@
 		87B58C1A1C878ADB00DA8362 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B58C1C1C878ADB00DA8362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B58C241C8790D000DA8362 /* bb8.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bb8.obj; sourceTree = "<group>"; };
-		87B58C291C87969100DA8362 /* deadpool.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deadpool.obj; sourceTree = "<group>"; };
 		87B58C311C87A5B200DA8362 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RenderingBase.framework; path = "/Users/a310195933/Library/Developer/Xcode/DerivedData/SwiftSoftwareRenderer-ffkcmkfrxjhjlcfuctlwygfyrklg/Build/Products/Debug/RenderingBase.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +86,6 @@
 		87B58C221C8790C300DA8362 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				87B58C291C87969100DA8362 /* deadpool.obj */,
 				87B58C231C8790D000DA8362 /* BB8 */,
 			);
 			name = Resources;
@@ -164,7 +161,6 @@
 				87B58C2D1C87A0EC00DA8362 /* bb8.obj in Resources */,
 				87B58C181C878ADB00DA8362 /* Assets.xcassets in Resources */,
 				87B58C1B1C878ADB00DA8362 /* Main.storyboard in Resources */,
-				87B58C2A1C87969100DA8362 /* deadpool.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
