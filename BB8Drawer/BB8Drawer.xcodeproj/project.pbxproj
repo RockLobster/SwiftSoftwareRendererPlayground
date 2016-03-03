@@ -11,9 +11,25 @@
 		87B58C161C878ADB00DA8362 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B58C151C878ADB00DA8362 /* ViewController.swift */; };
 		87B58C181C878ADB00DA8362 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C171C878ADB00DA8362 /* Assets.xcassets */; };
 		87B58C1B1C878ADB00DA8362 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C191C878ADB00DA8362 /* Main.storyboard */; };
-		87B58C251C8790D000DA8362 /* bb8.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C241C8790D000DA8362 /* bb8.obj */; };
-		87B58C271C8792EB00DA8362 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B58C261C8792EB00DA8362 /* RenderingBase.framework */; };
+		87B58C2A1C87969100DA8362 /* deadpool.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C291C87969100DA8362 /* deadpool.obj */; };
+		87B58C2D1C87A0EC00DA8362 /* bb8.obj in Resources */ = {isa = PBXBuildFile; fileRef = 87B58C241C8790D000DA8362 /* bb8.obj */; };
+		87B58C351C87A5CA00DA8362 /* RenderingBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87B58C311C87A5B200DA8362 /* RenderingBase.framework */; };
+		87B58C361C87A5CA00DA8362 /* RenderingBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87B58C311C87A5B200DA8362 /* RenderingBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87B58C371C87A5CA00DA8362 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				87B58C361C87A5CA00DA8362 /* RenderingBase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		87B58C101C878ADB00DA8362 /* BB8Drawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BB8Drawer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,7 +39,8 @@
 		87B58C1A1C878ADB00DA8362 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		87B58C1C1C878ADB00DA8362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B58C241C8790D000DA8362 /* bb8.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bb8.obj; sourceTree = "<group>"; };
-		87B58C261C8792EB00DA8362 /* RenderingBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RenderingBase.framework; path = ../RenderingBase/build/Debug/RenderingBase.framework; sourceTree = "<group>"; };
+		87B58C291C87969100DA8362 /* deadpool.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deadpool.obj; sourceTree = "<group>"; };
+		87B58C311C87A5B200DA8362 /* RenderingBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = RenderingBase.framework; path = "/Users/a310195933/Library/Developer/Xcode/DerivedData/SwiftSoftwareRenderer-ffkcmkfrxjhjlcfuctlwygfyrklg/Build/Products/Debug/RenderingBase.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B58C271C8792EB00DA8362 /* RenderingBase.framework in Frameworks */,
+				87B58C351C87A5CA00DA8362 /* RenderingBase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,9 +58,9 @@
 		87B58C071C878ADB00DA8362 = {
 			isa = PBXGroup;
 			children = (
+				87B58C311C87A5B200DA8362 /* RenderingBase.framework */,
 				87B58C121C878ADB00DA8362 /* BB8Drawer */,
 				87B58C221C8790C300DA8362 /* Resources */,
-				87B58C281C87930900DA8362 /* Dependencies */,
 				87B58C111C878ADB00DA8362 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +88,7 @@
 		87B58C221C8790C300DA8362 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87B58C291C87969100DA8362 /* deadpool.obj */,
 				87B58C231C8790D000DA8362 /* BB8 */,
 			);
 			name = Resources;
@@ -84,14 +102,6 @@
 			path = BB8;
 			sourceTree = "<group>";
 		};
-		87B58C281C87930900DA8362 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				87B58C261C8792EB00DA8362 /* RenderingBase.framework */,
-			);
-			name = Dependencies;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +112,7 @@
 				87B58C0C1C878ADB00DA8362 /* Sources */,
 				87B58C0D1C878ADB00DA8362 /* Frameworks */,
 				87B58C0E1C878ADB00DA8362 /* Resources */,
+				87B58C371C87A5CA00DA8362 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,9 +161,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87B58C251C8790D000DA8362 /* bb8.obj in Resources */,
+				87B58C2D1C87A0EC00DA8362 /* bb8.obj in Resources */,
 				87B58C181C878ADB00DA8362 /* Assets.xcassets in Resources */,
 				87B58C1B1C878ADB00DA8362 /* Main.storyboard in Resources */,
+				87B58C2A1C87969100DA8362 /* deadpool.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +317,7 @@
 				87B58C211C878ADB00DA8362 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

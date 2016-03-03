@@ -5,9 +5,9 @@
       location = "group:BB8Drawer/BB8Drawer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:RenderingBase/../VectorDrawing.playground">
+      location = "group:RenderingBase/RenderingBase.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:RenderingBase/RenderingBase.xcodeproj">
+      location = "group:RenderingBase/../VectorDrawing.playground">
    </FileRef>
 </Workspace>

@@ -38,7 +38,7 @@ if let model = model {
     let bitmap = Bitmap(width: 400, height: 400)
     let boundingBox = model.boundingBox!
     
-    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.01)
+    let projectionMatrix = boundingBox.calculateBestProjectionMatrixForTargetAspectRatio(bitmap.aspectRatio, zoomFactor: 1.00)
     let vertexShader = SimpleProjectionShader(projectionMatrix)
     
     func renderUsingRasterer(rasterer: TriangleRasterer, cullBackfaces: Bool) -> NSImage? {
@@ -52,6 +52,8 @@ if let model = model {
     imageView.image = renderUsingRasterer( WireframeRasterer(target: bitmap, lineColor: Color.Green()), cullBackfaces: false)
     
     imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: LocationBasedFragmentShader(boundingBox.depth * 1.0)), cullBackfaces: true)
+    
+    imageView.image = renderUsingRasterer( FillingRasterer(target: bitmap, fragmentShader: SimplePhongShaderForLightPosition(Vector3D(0.5, 0, 0.5).normalized())), cullBackfaces: true)
 }
 
 //: [Next](@next)
