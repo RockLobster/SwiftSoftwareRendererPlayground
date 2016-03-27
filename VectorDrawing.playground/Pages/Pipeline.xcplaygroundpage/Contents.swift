@@ -1,4 +1,4 @@
-//: [Previous](@previous)
+//: [Back to Table of Contents](@first) | [Previous](@previous)
 
 import AppKit
 import RenderingBase
